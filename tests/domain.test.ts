@@ -5,10 +5,10 @@ import {demoProperties} from '../lib/demo';
 import {inquirySchema,requestSchema,propertySchema} from '../lib/validation';
 import {normalizePropertySlugs} from '../lib/slug';
 
-test('dimension search excludes unknown dimensions and respects all five dimensions',()=>{
- const unknown={...demoProperties[0],id:'unknown',garage_width_mm:null};
- assert.equal(filterDemo([...demoProperties,unknown],parseSearch({garage_width_mm:'5000',entrance_height_mm:'2300'})).length,3);
- assert.equal(filterDemo(demoProperties,parseSearch({entrance_height_mm:'2400'})).length,0);
+test('garage dimensions remain property data but are no longer accepted as search filters',()=>{
+ const q=parseSearch({garage_width_mm:'5000',garage_depth_mm:'6000',garage_height_mm:'2400',entrance_width_mm:'2500',entrance_height_mm:'2300'});
+ for(const key of ['garage_width_mm','garage_depth_mm','garage_height_mm','entrance_width_mm','entrance_height_mm'])assert.ok(!(key in q));
+ assert.equal(filterDemo(demoProperties,q).length,demoProperties.length);
 });
 test('filters combine AND; sorting and nationwide prefectures are supported',()=>{
  assert.deepEqual(filterDemo(demoProperties,parseSearch({prefecture:'osaka',garage_count:'2',ev_charger:'1'})).map(p=>p.prefecture),['osaka']);
