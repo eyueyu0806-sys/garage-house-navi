@@ -4,6 +4,7 @@ export type LeadEmailSummary = {
   inquiryType?: string | null;
   prefecture?: string | null;
   city?: string | null;
+  mustHaves?: string | null;
   submissionId: string;
 };
 
@@ -24,11 +25,12 @@ export function buildLeadNotification(summary: LeadEmailSummary, adminUrl: strin
     : '【GARAGE HOUSE NAVI】新しい物件リクエスト';
   const details = isInquiry
     ? `<p>対象物件：${escapeEmailHtml(summary.propertyName || '物件情報を管理画面でご確認ください')}</p><p>問い合わせ内容：${escapeEmailHtml(summary.inquiryType || '物件ページからのお問い合わせ')}</p>`
-    : `<p>希望エリア：${escapeEmailHtml([summary.prefecture, summary.city].filter(Boolean).join(' ') || '指定なし')}</p>`;
+    : `<p>希望エリア：${escapeEmailHtml([summary.prefecture, summary.city].filter(Boolean).join(' ') || '指定なし')}</p><p>希望条件：${escapeEmailHtml(summary.mustHaves || '指定なし')}</p>`;
   const safeAdminUrl = escapeEmailHtml(adminUrl);
   const text = [
     isInquiry ? '物件への新しいお問い合わせを受け付けました。' : '新しい物件リクエストを受け付けました。',
     isInquiry ? `対象物件: ${summary.propertyName || '管理画面でご確認ください'}` : `希望エリア: ${[summary.prefecture, summary.city].filter(Boolean).join(' ') || '指定なし'}`,
+    ...(!isInquiry && summary.mustHaves ? [`希望条件: ${summary.mustHaves}`] : []),
     `管理画面で詳細をご確認ください: ${adminUrl}`,
   ].join('\n');
 
