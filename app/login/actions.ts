@@ -4,7 +4,7 @@ export async function login(form:FormData){
  if(!configured())redirect('/login?error=setup');
  const email=String(form.get('email')||'').trim(),password=String(form.get('password')||'');
  if(email.length>254||password.length>1024||!email||!password)redirect('/login?error=invalid');
- try {serviceDb();const h=await headers();if(!await rateLimit(new Request('http://localhost',{headers:h}),'login',20))redirect('/login?error=rate');}catch(error){if(error instanceof Error&&error.message==='NEXT_REDIRECT')throw error;redirect('/login?error=setup');}
+ try {serviceDb();const h=await headers();if(!await rateLimit(new Request('http://localhost',{headers:h}),'login',20,email.toLowerCase()))redirect('/login?error=rate');}catch(error){if(error instanceof Error&&error.message==='NEXT_REDIRECT')throw error;redirect('/login?error=setup');}
  const db=await supabase();const {data,error}=await db.auth.signInWithPassword({email,password});
  if(error||!data.user)redirect('/login?error=invalid');
  const {data:profile}=await db.from('admin_profiles').select('id').eq('id',data.user.id).maybeSingle();
