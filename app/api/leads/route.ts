@@ -31,6 +31,7 @@ export async function POST(request:Request){
    inquiryType:kind==='inquiry'&&'inquiry_type' in data?String(data.inquiry_type):undefined,
    prefecture:kind==='request'&&'prefecture' in data?String(data.prefecture||''):undefined,
    city:kind==='request'&&'city' in data?String(data.city||''):undefined,
+   mustHaves:kind==='request'&&'must_haves' in data?String(data.must_haves||''):undefined,
   },data.email||null);
  }
  return NextResponse.json({ok:true},{status:200});
