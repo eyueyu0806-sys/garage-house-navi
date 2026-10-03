@@ -1,0 +1,4 @@
+export const dynamic='force-dynamic';
+import {leadFormsEnabled} from '@/lib/config';import {Breadcrumb} from '@/components/site-shell';
+export const metadata={title:'利用規約',alternates:{canonical:'/terms'}};
+export default function Terms(){return <div className="page-wrap legal-page"><Breadcrumb items={[{label:'利用規約'}]}/><div className="page-heading"><h1>利用規約</h1></div>{!leadFormsEnabled()&&<p className="notice">公開前の確認用ドラフトです。</p>}<h2>本サービスについて</h2><p>GARAGE HOUSE NAVIは、ガレージハウスの物件情報を提供し、運営会社へのお問い合わせを受け付けるサービスです。お問い合わせだけで賃貸借契約や申込みが成立することはありません。</p><h2>掲載情報について</h2><p>募集状況や費用、利用条件は変更される場合があります。契約前には担当者から最新の条件・説明をご確認ください。ガレージへの入庫可否は、寸法に加え、実車の形状、乗降スペース、前面道路、進入角などを含めて確認してください。</p><h2>禁止事項</h2><p>虚偽の情報による問い合わせ、第三者へのなりすまし、不正アクセス、サービスの運営を妨げる行為、無断での掲載写真・文章の転載を禁止します。</p><h2>サービスの変更</h2><p>保守や運営上の事情によりサービス内容の変更・中断を行う場合があります。</p><h2>責任の範囲</h2><p>当社の責任の有無および範囲は適用法令に従うものとし、消費者契約法その他の法令によって認められない免責を定めるものではありません。</p><h2>準拠法</h2><p>本規約は日本法に準拠します。</p></div>}

@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function NotFound(){return <main className="empty-state"><p className="eyebrow">404 / NOT FOUND</p><h1>ページが見つかりませんでした。</h1><p>物件が非公開、または募集終了となった可能性があります。</p><Link className="button" href="/properties">公開中の物件を探す</Link><Link className="text-link" href="/request">希望条件を送る</Link></main>}

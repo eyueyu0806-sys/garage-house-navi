@@ -1,0 +1,3 @@
+import Link from 'next/link';import {PREFECTURES,KANSAI} from '@/lib/constants';import {Breadcrumb} from '@/components/site-shell';
+export const metadata={title:'全国のエリアから探す',alternates:{canonical:'/areas'}};
+export default function Areas(){return <div className="page-wrap"><Breadcrumb items={[{label:'エリアから探す'}]}/><div className="page-heading"><p className="eyebrow">EXPLORE JAPAN</p><h1>エリアから探す</h1><p>関西を中心に、全国のガレージハウスへ。</p></div><div className="areas-grid">{PREFECTURES.map(p=><Link key={p.slug} href={KANSAI.includes(p.slug)?`/${p.slug}`:`/properties?prefecture=${p.slug}`}>{p.name}</Link>)}</div></div>}
