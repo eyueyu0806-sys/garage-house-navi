@@ -22,7 +22,7 @@ export async function getProperties(raw:Query={},options:{featured?:boolean;limi
  const db=await supabase();
  let req=db.from('properties').select('*, property_images(*)',{count:'exact'}).eq('status','published');
  for(const key of ['prefecture','city','city_slug','layout'])if(q[key])req=req.eq(key,q[key]);
- for(const [key,col] of Object.entries({min_rent:'rent',min_area:'floor_area',garage_count:'garage_count',garage_width_mm:'garage_width_mm',garage_depth_mm:'garage_depth_mm',garage_height_mm:'garage_height_mm',entrance_width_mm:'entrance_width_mm',entrance_height_mm:'entrance_height_mm'}))if(q[key])req=req.gte(col,Number(q[key]));
+ for(const [key,col] of Object.entries({min_rent:'rent',min_area:'floor_area',garage_count:'garage_count'}))if(q[key])req=req.gte(col,Number(q[key]));
  for(const [key,col] of Object.entries({max_rent:'rent',max_area:'floor_area',walking_minutes:'walking_minutes'}))if(q[key])req=req.lte(col,Number(q[key]));
  if(q.built_after)req=req.gte('built_at',`${Math.max(1800,Math.min(2200,Number(q.built_after)))}-01-01`);
  for(const [key] of FEATURES)if(q[key]==='1')req=req.eq(key,true);
