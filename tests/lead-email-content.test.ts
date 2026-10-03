@@ -16,3 +16,9 @@ test('receipt email contains acknowledgement but no submitted contact details',(
  assert.match(email.text,/担当者より内容を確認/);
  assert.doesNotMatch(email.text,/example@email\.com|09012345678/);
 });
+
+test('request notification includes selected garage dimensions',()=>{
+ const email=buildLeadNotification({kind:'request',submissionId:'id',prefecture:'osaka',mustHaves:'幅 5500 mm以上 / 奥行 6200 mm以上'},'https://garage.example/admin/requests');
+ assert.match(email.text,/幅 5500 mm以上 \/ 奥行 6200 mm以上/);
+ assert.match(email.html,/希望条件：幅 5500 mm以上 \/ 奥行 6200 mm以上/);
+});
