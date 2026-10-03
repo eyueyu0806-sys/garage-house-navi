@@ -4,13 +4,15 @@ Next.js App Router / TypeScript / Tailwind CSS / Supabase を使ったガレー�
 
 ## 現在の状態
 
-**アプリとDBマイグレーションを実装済み。本番サービスへの接続・公開は未実施です。**
+**MVPコードはGitHubへpush済み。Supabaseプロジェクトは作成済みで、DBマイグレーションも適用済みです。Vercelへのデプロイと実運用設定はこれからです。**
 
 - 本番ビルドとTypeScript検証：成功。
 - 検索・入力検証・DBマイグレーション・RLS・公開制御・問い合わせ更新・レート制限：ローカルで検証済み。
-- Supabase Auth、実Storage、実サービスでの完全なE2E：未接続のため未検証。
+- Supabase Auth、実Storage、実サービスでの完全なE2E：未検証。管理者アカウントは未登録です。
 - デスクトップ／モバイル実ブラウザーQA：プレビュー環境の接続制約により未完了。
-- GitHubへのpush、Vercelへのデプロイ、独自ドメイン：未実施。
+- GitHub: `https://github.com/eyueyu0806-sys/garage-house-navi`
+- Vercelへのデプロイ、独自ドメイン：未実施。
+- サーバー専用service role keyと運営会社情報：未設定。安全のため問い合わせフォームは無効です。
 
 画面確認用の架空物件は `DEMO_MODE=true` のときだけ表示します。デモ中は問い合わせ受付を停止し、画面上にサンプル表示・noindexを設定します。DB未接続時に保存成功を装う処理はありません。
 
@@ -35,12 +37,10 @@ npm start
 
 ## Supabaseの接続
 
-1. 新しいSupabaseプロジェクトを作成します。既存本番DBへ無確認で適用しないでください。
-2. SQL Editorで以下を順番に実行します。
-   - `supabase/migrations/001_initial.sql`
-   - `supabase/migrations/002_image_order.sql`
-3. Supabase URL、publishable/anon key、service role keyを `.env.local` に設定します。service role keyはサーバー専用です。チャットやGitへ貼り付けず、ホスティング先の秘密の環境変数として設定します。
-4. Supabase Authの公開サインアップを無効にします。DashboardのAuthenticationから管理者ユーザーを作成し、確認済みのメールアドレスとパスワードを設定します。
+1. 接続済みSupabaseプロジェクトは `fgedwotipostbtadrxzz`（project URLはDashboardで確認）です。4件のDBマイグレーション適用と47都道府県データを確認済みです。既存プロジェクトへ同じSQLを再実行しないでください。
+2. 新規Supabaseプロジェクトを別途作る場合のみ、SQL Editorで `supabase/migrations/001_initial.sql` から `004_admin_predicate_invoker_wrapper.sql` まで順番に実行します。
+3. Supabase URL、publishable/anon key、service role keyを環境変数に設定します。service role keyはサーバー専用です。チャットやGitへ貼り付けず、Vercelの秘密の環境変数として設定します。ローカル `.env.local` にはURLとpublishable keyを設定済みですが、service role keyは未設定です。
+4. Supabase Authの公開サインアップを無効にします。DashboardのAuthenticationから管理者ユーザーを作成し、確認済みのメールアドレスとパスワードを設定します。現時点で `admin_profiles` に管理者は登録されていません。
 5. そのAuthユーザーのUUIDを確認し、SQL Editorから次の登録を実行します。アプリ画面やユーザーの自己申告による管理者昇格はできません。
 
 ```sql
@@ -93,7 +93,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 4. Preview URLで上記フローを確認後、Productionへ公開します。
 5. 公開直前にデモを無効化し、実物件の掲載許諾・募集状況・取引条件・会社情報を確認します。
 
-現時点ではリポジトリ作成・デプロイは行っていません。Sites用の別フレームワークやDBへ置換せず、指定のNext.js / Supabase / Vercel構成を維持しています。
+コードはGitHubへpush済みですが、Vercelアカウント／プロジェクトはまだ接続されていません。VercelでGitHubリポジトリをImportし、上記環境変数を設定してください。Sites用の別フレームワークやDBへ置換せず、指定のNext.js / Supabase / Vercel構成を維持しています。
 
 ## 実装済み機能
 
