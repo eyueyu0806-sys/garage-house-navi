@@ -4,6 +4,7 @@ import {parseSearch,filterDemo} from '../lib/search';
 import {demoProperties} from '../lib/demo';
 import {inquirySchema,requestSchema,propertySchema} from '../lib/validation';
 import {normalizePropertySlugs} from '../lib/slug';
+import {GARAGE_FIELDS} from '../lib/editor-fields';
 
 test('garage dimensions remain property data but are no longer accepted as search filters',()=>{
  const q=parseSearch({garage_width_mm:'5000',garage_depth_mm:'6000',garage_height_mm:'2400',entrance_width_mm:'2500',entrance_height_mm:'2300'});
@@ -25,9 +26,10 @@ test('lead validation accepts either contact method and rejects contactless/spam
  assert.ok(requestSchema.safeParse({...contact,prefecture:'osaka',budget:'180000'}).success);
 });
 test('numeric empty input is null, not misleading zero; admin fields cannot elevate roles',()=>{
- const parsed=propertySchema.parse({...demoProperties[0],garage_width_mm:'',management_fee:'',is_admin:true});
- assert.equal(parsed.garage_width_mm,null);assert.equal(parsed.management_fee,null);assert.ok(!('is_admin' in parsed));
- assert.equal(propertySchema.safeParse({...demoProperties[0],garage_width_mm:0}).success,false);
+ const parsed=propertySchema.parse({...demoProperties[0],garage_width_mm:5500,garage_depth_mm:6200,entrance_width_mm:2500,management_fee:'',is_admin:true});
+ assert.equal(parsed.management_fee,null);assert.ok(!('is_admin' in parsed));
+ for(const key of ['garage_width_mm','garage_depth_mm','garage_height_mm','entrance_width_mm','entrance_height_mm'])assert.ok(!(key in parsed));
+ assert.deepEqual(GARAGE_FIELDS.map(({key})=>key),['garage_count','garage_type']);
 });
 test('Japanese property names use an ASCII property-code slug; city slug may be omitted',()=>{
  assert.deepEqual(normalizePropertySlugs('箕面ガレージハウス','GHN-001','箕面市'),{slug:'ghn-001',city_slug:''});
