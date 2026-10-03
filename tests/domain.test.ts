@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {parseSearch,filterDemo} from '../lib/search';
 import {demoProperties} from '../lib/demo';
 import {inquirySchema,requestSchema,propertySchema} from '../lib/validation';
+import {normalizePropertySlugs} from '../lib/slug';
 
 test('dimension search excludes unknown dimensions and respects all five dimensions',()=>{
  const unknown={...demoProperties[0],id:'unknown',garage_width_mm:null};
@@ -27,4 +28,8 @@ test('numeric empty input is null, not misleading zero; admin fields cannot elev
  const parsed=propertySchema.parse({...demoProperties[0],garage_width_mm:'',management_fee:'',is_admin:true});
  assert.equal(parsed.garage_width_mm,null);assert.equal(parsed.management_fee,null);assert.ok(!('is_admin' in parsed));
  assert.equal(propertySchema.safeParse({...demoProperties[0],garage_width_mm:0}).success,false);
+});
+test('Japanese property names use an ASCII property-code slug; city slug may be omitted',()=>{
+ assert.deepEqual(normalizePropertySlugs('箕面ガレージハウス','GHN-001','箕面市'),{slug:'ghn-001',city_slug:''});
+ assert.deepEqual(normalizePropertySlugs('minoh-house','GHN-001','minoh'),{slug:'minoh-house',city_slug:'minoh'});
 });
