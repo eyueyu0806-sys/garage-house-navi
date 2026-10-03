@@ -65,10 +65,14 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 | DEMO_MODE | 実運用は `false` |
 | LEAD_FORMS_ENABLED | 接続・表示内容を確認後に `true` |
 | OPERATOR_NAME / ADDRESS / PHONE / EMAIL / LICENSE / REPRESENTATIVE | 運営会社情報 |
+| RESEND_API_KEY | Resendのサーバー専用APIキー。VercelではSecretとして登録 |
+| LEAD_EMAIL_FROM | Resendで認証済みの送信元。例 `GARAGE HOUSE NAVI <no-reply@notify.example.jp>` |
 
 `NEXT_PUBLIC_SITE_URL` は送信元Origin検証にも使用します。VercelのPreviewとProductionには、それぞれ実際のホストを設定してください。localhostで確認する場合もポートを合わせます。
 
 会社情報・利用規約・プライバシーポリシーは構造とドラフトです。実際の運営会社、業態、委託先、個人情報の取扱い等に合わせて確認・確定してください。架空の会社名・免許番号は入れていません。フォームを有効にするには最低でも運営会社名・連絡先とサービスキーの設定が必要です。
+
+問い合わせをメール通知する場合はResendを設定します。Resendで送信ドメインを認証し、`RESEND_API_KEY` と認証済み送信元 `LEAD_EMAIL_FROM` をVercelのProduction環境に登録してください。問い合わせは先にDBへ保存され、その後ASC不動産へ管理画面リンク付き通知を送ります。メール入力がある場合は受付確認メールも送ります。メール送信に失敗しても保存済み問い合わせは管理画面に残ります。送信者のAPIキーや問い合わせ本文などの個人情報はログへ出しません。
 
 ## 最重要フローの確認手順
 
@@ -126,7 +130,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 
 ## MVPの範囲外・残っている確認
 
-- メール／LINE通知：未実装。問い合わせは管理画面で確認します（仕様の必須要件はDB保存）。
+- Resendによる問い合わせ通知・受付確認メール：実装済み。送信ドメイン/APIキー設定後に有効化。LINE通知は未実装。
 - 車種マスタとの自動寸法判定、CMS、有料掲載、一般会員、地図検索：未実装。
 - 記事本文：未作成。
 - 実Supabase Auth/Storage/RESTを通したフロー、実Vercel環境でのOrigin、画像、権限、モバイル操作確認：接続後に実施。
@@ -134,7 +138,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 
 ## テスト
 
-`npm test` は5テストを実行。PostgreSQL互換のPGliteで、SupabaseのAuth/Storageメタデータを最小構成で再現し、実際のマイグレーションSQLと権限を検証します。これは実Supabaseへの結合テストの代わりではありません。
+`npm test` は7テストを実行。PostgreSQL互換のPGliteで、SupabaseのAuth/Storageメタデータを最小構成で再現し、実際のマイグレーションSQLと権限を検証します。これは実Supabaseへの結合テストの代わりではありません。
 
 ブラウザー検証用スクリプト `scripts/browser-check.mjs` は、`DEMO_MODE=true` でアプリを起動後に実行できます。
 
