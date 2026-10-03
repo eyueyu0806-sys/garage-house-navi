@@ -3,6 +3,7 @@ import {leadFormsEnabled} from '@/lib/config';
 import {inquirySchema,requestSchema} from '@/lib/validation';
 import {sameOrigin,validFormToken,rateLimit,readJson,sanitizedSource} from '@/lib/security';
 import {serviceDb} from '@/lib/supabase';
+import {sendLeadEmails} from '@/lib/lead-email';
 export async function POST(request:Request){
  if(!sameOrigin(request))return NextResponse.json({error:'このページから送信してください。'},{status:403});
  if(!leadFormsEnabled())return NextResponse.json({error:'現在、受付準備中です。送信内容は保存されていません。'},{status:503});
@@ -22,6 +23,17 @@ export async function POST(request:Request){
  }
  const {error}=await db.from(kind==='inquiry'?'inquiries':'property_requests').insert(record);
  if(error && error.code!=='23505')throw error;
+ if(!error){
+  await sendLeadEmails({
+   kind,
+   submissionId:data.submission_id,
+   propertyName:kind==='inquiry'?String(record.property_name_snapshot):undefined,
+   inquiryType:kind==='inquiry'&&'inquiry_type' in data?String(data.inquiry_type):undefined,
+   prefecture:kind==='request'&&'prefecture' in data?String(data.prefecture||''):undefined,
+   city:kind==='request'&&'city' in data?String(data.city||''):undefined,
+   mustHaves:kind==='request'&&'must_haves' in data?String(data.must_haves||''):undefined,
+  },data.email||null);
+ }
  return NextResponse.json({ok:true},{status:200});
  }catch{return NextResponse.json({error:'送信できませんでした。入力内容を残したまま、しばらくしてからお試しください。'},{status:500});}
 }
