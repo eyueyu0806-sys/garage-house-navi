@@ -12,10 +12,12 @@ export function validFormToken(token:string){
 export function sameOrigin(request:Request){
  const origin=request.headers.get('origin');return origin===new URL(siteUrl()).origin;
 }
-export async function rateLimit(request:Request,scope:string,limit=5){
+export async function rateLimit(request:Request,scope:string,limit=5,identity?:string){
  // Vercel overwrites x-vercel-forwarded-for; never trust arbitrary X-Forwarded-For.
  const ip=process.env.VERCEL ? request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()||'unknown' : 'local';
- const key=createHmac('sha256',secret()).update(`${scope}:${ip}`).digest('hex');
+ // Login attempts are keyed by account identity so a shared network cannot lock out all admins.
+ // Other rate-limited actions continue to use the client IP.
+ const key=createHmac('sha256',secret()).update(identity?`${scope}:identity:${identity}`:`${scope}:${ip}`).digest('hex');
  const {data,error}=await serviceDb().rpc('consume_rate_limit',{p_key:key,p_limit:limit});
  if(error)throw new Error('RATE_LIMIT_UNAVAILABLE');return data===true;
 }
