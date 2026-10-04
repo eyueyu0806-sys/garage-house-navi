@@ -11,6 +11,8 @@ test('PostgreSQL migration + RLS + atomic publication + leads + rate limit',asyn
  alter table storage.objects enable row level security;grant all on storage.objects to anon,authenticated,service_role;`);
  await db.exec(await readFile('supabase/migrations/001_initial.sql','utf8'));
  await db.exec(await readFile('supabase/migrations/002_image_order.sql','utf8'));
+ await db.exec(await readFile('supabase/migrations/004_increase_property_image_limit.sql','utf8'));
+ assert.equal((await db.query<{file_size_limit:number}>("select file_size_limit from storage.buckets where id='property-images'")).rows[0].file_size_limit,52428800);
  const admin='00000000-0000-4000-8000-000000000001',normal='00000000-0000-4000-8000-000000000002';
  await db.exec(`insert into auth.users values('${admin}'),('${normal}');insert into public.admin_profiles(id,display_name) values('${admin}','Admin');`);
  await db.exec(`set role authenticated;set request.jwt.claim.sub='${admin}'`);
