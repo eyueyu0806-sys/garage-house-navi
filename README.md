@@ -65,6 +65,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 | DEMO_MODE | 実運用は `false` |
 | LEAD_FORMS_ENABLED | 接続・表示内容を確認後に `true` |
 | OPERATOR_NAME / ADDRESS / PHONE / EMAIL / LICENSE / REPRESENTATIVE | 運営会社情報 |
+| LEAD_NOTIFICATION_EMAIL | 反響通知の受信先。未設定の場合は OPERATOR_EMAIL に送信 |
 | RESEND_API_KEY | Resendのサーバー専用APIキー。VercelではSecretとして登録 |
 | LEAD_EMAIL_FROM | Resendで認証済みの送信元。例 `GARAGE HOUSE NAVI <no-reply@notify.example.jp>` |
 
@@ -72,7 +73,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 
 会社情報・利用規約・プライバシーポリシーは構造とドラフトです。実際の運営会社、業態、委託先、個人情報の取扱い等に合わせて確認・確定してください。架空の会社名・免許番号は入れていません。フォームを有効にするには最低でも運営会社名・連絡先とサービスキーの設定が必要です。
 
-問い合わせをメール通知する場合はResendを設定します。Resendで送信ドメインを認証し、`RESEND_API_KEY` と認証済み送信元 `LEAD_EMAIL_FROM` をVercelのProduction環境に登録してください。問い合わせは先にDBへ保存され、その後ASC不動産へ管理画面リンク付き通知を送ります。メール入力がある場合は受付確認メールも送ります。メール送信に失敗しても保存済み問い合わせは管理画面に残ります。送信者のAPIキーや問い合わせ本文などの個人情報はログへ出しません。
+問い合わせをメール通知する場合はResendを設定します。Resendで送信ドメインを認証し、`RESEND_API_KEY` と認証済み送信元 `LEAD_EMAIL_FROM` をVercelのProduction環境に登録してください。問い合わせは先にDBへ保存され、その後 `LEAD_NOTIFICATION_EMAIL`（未設定時は `OPERATOR_EMAIL`）へ管理画面リンク付き通知を送ります。メール入力がある場合は受付確認メールも送ります。メール送信に失敗しても保存済み問い合わせは管理画面に残ります。送信者のAPIキーや問い合わせ本文などの個人情報はログへ出しません。
 
 ## 最重要フローの確認手順
 
