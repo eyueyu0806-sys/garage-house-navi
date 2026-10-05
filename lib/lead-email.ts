@@ -1,6 +1,6 @@
 import 'server-only';
 import {operator, siteUrl} from './config';
-import {buildLeadNotification, buildLeadReceipt, type LeadEmailSummary} from './lead-email-content';
+import {buildLeadNotification, buildLeadReceipt, resolveLeadNotificationRecipient, type LeadEmailSummary} from './lead-email-content';
 
 type SendParams = {to:string;subject:string;html:string;text:string;replyTo?:string;idempotencyKey:string};
 
@@ -19,13 +19,14 @@ async function sendEmail(params:SendParams):Promise<void>{
 
 export async function sendLeadEmails(summary:LeadEmailSummary,email?:string|null):Promise<void>{
  const company=operator();
+ const notificationRecipient=resolveLeadNotificationRecipient(process.env.LEAD_NOTIFICATION_EMAIL,company.email);
  const from=process.env.LEAD_EMAIL_FROM;
- if(!process.env.RESEND_API_KEY||!from||!company.email)return;
+ if(!process.env.RESEND_API_KEY||!from||!notificationRecipient)return;
  const adminPath=summary.kind==='inquiry'?'/admin/leads':'/admin/requests';
  const adminUrl=`${siteUrl()}${adminPath}`;
  const notification=buildLeadNotification(summary,adminUrl);
  try{
-  await sendEmail({...notification,to:company.email,replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-admin`});
+  await sendEmail({...notification,to:notificationRecipient,replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-admin`});
  }catch(error){
   console.error('Lead email notification failed:',error instanceof Error?error.message:'unknown error');
   return;
