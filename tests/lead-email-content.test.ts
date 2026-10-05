@@ -1,6 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {buildLeadNotification,buildLeadReceipt,escapeEmailHtml} from '../lib/lead-email-content';
+import {buildLeadNotification,buildLeadReceipt,escapeEmailHtml,resolveLeadNotificationRecipient} from '../lib/lead-email-content';
+
+test('dedicated lead notification address takes precedence without changing operator contact',()=>{
+ assert.equal(resolveLeadNotificationRecipient(' asc.yw1233@gmail.com ','info@example.jp'),'asc.yw1233@gmail.com');
+ assert.equal(resolveLeadNotificationRecipient('', 'info@example.jp'),'info@example.jp');
+ assert.equal(resolveLeadNotificationRecipient(undefined, undefined),null);
+});
 
 test('email HTML escapes user-controlled text and dashboard URL',()=>{
  assert.equal(escapeEmailHtml(`<script a="b">&'`),'&lt;script a=&quot;b&quot;&gt;&amp;&#39;');
