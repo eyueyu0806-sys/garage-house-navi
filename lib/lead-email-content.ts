@@ -8,6 +8,13 @@ export type LeadEmailSummary = {
   submissionId: string;
 };
 
+export function resolveLeadNotificationRecipient(
+  dedicatedRecipient: string | null | undefined,
+  operatorEmail: string | null | undefined,
+): string | null {
+  return dedicatedRecipient?.trim() || operatorEmail?.trim() || null;
+}
+
 export function escapeEmailHtml(value: string): string {
   return value.replace(/[&<>"']/g, (char) => ({
     '&': '&amp;',
