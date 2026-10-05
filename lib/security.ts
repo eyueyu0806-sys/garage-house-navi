@@ -2,6 +2,7 @@ import 'server-only';
 import {createHmac,timingSafeEqual} from 'node:crypto';
 import {siteUrl} from './config';
 import {serviceDb} from './supabase';
+export {sameOrigin} from './origin';
 function secret(){return process.env.SUPABASE_SERVICE_ROLE_KEY||'';}
 export function issueFormToken(){const t=String(Date.now());return `${t}.${createHmac('sha256',secret()).update(t).digest('hex')}`;}
 export function validFormToken(token:string){
@@ -9,14 +10,11 @@ export function validFormToken(token:string){
  const age=Date.now()-Number(t);if(age<1500||age>2*3600*1000)return false;
  return timingSafeEqual(Buffer.from(sig),Buffer.from(createHmac('sha256',secret()).update(t).digest('hex')));
 }
-export function sameOrigin(request:Request){
- const origin=request.headers.get('origin');return origin===new URL(siteUrl()).origin;
-}
 export async function rateLimit(request:Request,scope:string,limit=5,identity?:string){
  // Vercel overwrites x-vercel-forwarded-for; never trust arbitrary X-Forwarded-For.
  const ip=process.env.VERCEL ? request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()||'unknown' : 'local';
- // Login attempts are keyed by account identity so a shared network cannot lock out all admins.
- // Other rate-limited actions continue to use the client IP.
+ // Login attempts are keyed by account identity so one person on a shared office/home
+ // network cannot lock out every other administrator. Other scopes remain IP-based.
  const key=createHmac('sha256',secret()).update(identity?`${scope}:identity:${identity}`:`${scope}:${ip}`).digest('hex');
  const {data,error}=await serviceDb().rpc('consume_rate_limit',{p_key:key,p_limit:limit});
  if(error)throw new Error('RATE_LIMIT_UNAVAILABLE');return data===true;
