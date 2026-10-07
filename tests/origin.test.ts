@@ -14,3 +14,11 @@ test('same-origin guard uses the actual request host and still rejects cross-sit
   })),false);
   assert.equal(sameOrigin(new Request('https://garagehouse-navi.com/api/admin/properties',{method:'POST'})),false);
 });
+
+test('internal Next URL hostname does not reject the real received host',()=>{
+ const request=(origin:string,host:string,extra:Record<string,string>={})=>new Request('http://localhost:4111/api/admin/email-test',{method:'POST',headers:{origin,host,...extra}});
+ assert.equal(sameOrigin(request('http://127.0.0.1:4111','127.0.0.1:4111')),true);
+ assert.equal(sameOrigin(request('http://localhost:4111','127.0.0.1:4111')),false);
+ assert.equal(sameOrigin(request('https://attacker.example','127.0.0.1:4111',{'x-forwarded-host':'attacker.example','x-forwarded-proto':'https'})),false);
+ for(const host of ['127.0.0.1:4111/path','person@127.0.0.1:4111','127.0.0.1:4111?x=1'])assert.equal(sameOrigin(request('http://127.0.0.1:4111',host)),false);
+});
