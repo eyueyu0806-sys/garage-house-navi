@@ -24,11 +24,14 @@ export function leadCursorFilter(cursor:LeadRow,table:LeadTable){
  return `created_at.lt.${cursor.created_at},${beforeId}${sameId}`;
 }
 export function mergeLeadRows<T extends LeadRow>(rows:T[]){
- return [...rows].sort((a,b)=>
-  Date.parse(b.created_at)-Date.parse(a.created_at)||
-  (a.id===b.id?0:a.id<b.id?1:-1)||
-  (a.table===b.table?0:a.table<b.table?1:-1)
- );
+ // PostgreSQL timestamps have microseconds; Date.parse alone loses their order.
+ const micros=(value:string)=>BigInt(Math.floor(Date.parse(value)/1000))*BigInt(1000000)+
+  BigInt(((value.match(/\.(\d+)/)?.[1]||'')+'000000').slice(0,6));
+ return rows.map(row=>({row,time:micros(row.created_at)})).sort((left,right)=>{
+  if(left.time!==right.time)return left.time<right.time?1:-1;
+  const a=left.row,b=right.row;
+  return (a.id===b.id?0:a.id<b.id?1:-1)||(a.table===b.table?0:a.table<b.table?1:-1);
+ }).map(item=>item.row);
 }
 export function leadListUrl({kind='all',status,cursor}:{kind?:LeadKind;status?:string;cursor?:string}={}){
  const params=new URLSearchParams();
@@ -37,4 +40,3 @@ export function leadListUrl({kind='all',status,cursor}:{kind?:LeadKind;status?:s
  if(cursor)params.set('cursor',cursor);
  return '/admin/leads'+(params.size?'?'+params.toString():'');
 }
-

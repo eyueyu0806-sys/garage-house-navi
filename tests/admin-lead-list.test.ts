@@ -17,6 +17,13 @@ test('pagination includes the other table when the timestamp and ID match',()=>{
  assert.doesNotMatch(leadCursorFilter(row,'property_requests'),/id.eq/);
  assert.match(leadCursorFilter(row,'property_requests'),/id.lt/);
 });
+
+test('microsecond ordering agrees with PostgreSQL even within the same millisecond',()=>{
+ const newer={...row,id:'00000000-0000-4000-8000-000000000001',created_at:'2026-10-07T21:00:00.123999+09:00'};
+ const older={...row,id:'00000000-0000-4000-8000-000000000002',created_at:'2026-10-07T12:00:00.123001Z'};
+ assert.equal(Date.parse(newer.created_at),Date.parse(older.created_at));
+ assert.deepEqual(mergeLeadRows([older,newer]),[newer,older]);
+});
 test('cursor rejects injected filters, bad dates and unexpected keys',()=>{
  assert.deepEqual(parseLeadCursor(encodeLeadCursor(row)),row);
  for(const invalid of ['not-json',Buffer.from(JSON.stringify({...row,id:'x),id.gt.0'})).toString('base64url'),Buffer.from(JSON.stringify({...row,created_at:'tomorrow'})).toString('base64url'),Buffer.from(JSON.stringify({...row,extra:true})).toString('base64url'),'x'.repeat(513)])assert.equal(parseLeadCursor(invalid),null);
