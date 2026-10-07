@@ -1,42 +1,31 @@
 import 'server-only';
-import {operator, siteUrl} from './config';
-import {buildLeadNotification, buildLeadReceipt, resolveLeadNotificationRecipient, type LeadEmailSummary} from './lead-email-content';
+import {randomUUID} from 'node:crypto';
+import {operator,siteUrl} from './config';
+import {buildLeadNotification,buildLeadReceipt,resolveLeadNotificationRecipient,type LeadEmailSummary} from './lead-email-content';
+import {deliverEmail,type EmailConfig,type EmailResult} from './email-transport';
 
-type SendParams = {to:string;subject:string;html:string;text:string;replyTo?:string;idempotencyKey:string};
-
-async function sendEmail(params:SendParams):Promise<void>{
- const apiKey=process.env.RESEND_API_KEY;
- const from=process.env.LEAD_EMAIL_FROM;
- if(!apiKey||!from)throw new Error('EMAIL_PROVIDER_NOT_CONFIGURED');
- const response=await fetch('https://api.resend.com/emails',{
-  method:'POST',
-  headers:{Authorization:`Bearer ${apiKey}`,'Content-Type':'application/json','Idempotency-Key':params.idempotencyKey},
-  body:JSON.stringify({from,to:[params.to],subject:params.subject,html:params.html,text:params.text,reply_to:params.replyTo}),
-  signal:AbortSignal.timeout(8000),
- });
- if(!response.ok)throw new Error(`EMAIL_PROVIDER_HTTP_${response.status}`);
+export function leadEmailConfiguration():EmailConfig{
+ return {apiKey:process.env.RESEND_API_KEY,from:process.env.LEAD_EMAIL_FROM,
+  recipient:resolveLeadNotificationRecipient(process.env.LEAD_NOTIFICATION_EMAIL,operator().email)};
 }
-
+export async function sendTestLeadEmail():Promise<EmailResult>{
+ const config=leadEmailConfiguration();
+ return deliverEmail(config,{
+  to:config.recipient||'',
+  subject:'【GARAGE HOUSE NAVI】通知メールの動作確認',
+  text:'管理画面から送信したテストメールです。実際の問い合わせではありません。\nこのメールの受信が確認できれば、通知先への到着確認が完了です。',
+  html:'<p>管理画面から送信したテストメールです。実際の問い合わせではありません。</p><p>このメールの受信が確認できれば、通知先への到着確認が完了です。</p>',
+  idempotencyKey:`notification-test-${randomUUID()}`,
+ });
+}
 export async function sendLeadEmails(summary:LeadEmailSummary,email?:string|null):Promise<void>{
- const company=operator();
- const notificationRecipient=resolveLeadNotificationRecipient(process.env.LEAD_NOTIFICATION_EMAIL,company.email);
- const from=process.env.LEAD_EMAIL_FROM;
- if(!process.env.RESEND_API_KEY||!from||!notificationRecipient)return;
- const adminPath=summary.kind==='inquiry'?'/admin/leads':'/admin/requests';
- const adminUrl=`${siteUrl()}${adminPath}`;
- const notification=buildLeadNotification(summary,adminUrl);
- try{
-  await sendEmail({...notification,to:notificationRecipient,replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-admin`});
- }catch(error){
-  console.error('Lead email notification failed:',error instanceof Error?error.message:'unknown error');
-  return;
- }
+ const company=operator(),config=leadEmailConfiguration();
+ const notification=buildLeadNotification(summary,`${siteUrl()}/admin/leads?kind=${summary.kind}`);
+ const result=await deliverEmail(config,{...notification,to:config.recipient||'',replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-admin`});
+ if(!result.ok){console.error('Lead email notification failed:',result.code,'submission:',summary.submissionId);return;}
  if(email){
   const receipt=buildLeadReceipt(summary.kind,company.name||'株式会社ASC');
-  try{
-   await sendEmail({...receipt,to:email,replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-receipt`});
-  }catch(error){
-   console.error('Lead receipt email failed:',error instanceof Error?error.message:'unknown error');
-  }
+  const result=await deliverEmail(config,{...receipt,to:email,replyTo:company.email,idempotencyKey:`lead-${summary.submissionId}-receipt`});
+  if(!result.ok)console.error('Lead receipt email failed:',result.code,'submission:',summary.submissionId);
  }
 }

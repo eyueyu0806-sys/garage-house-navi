@@ -2,19 +2,26 @@
 
 Next.js App Router / TypeScript / Tailwind CSS / Supabase を使ったガレージハウス検索アプリ。
 
-## 現在の状態
+## 普段の操作
 
-**MVPコードはGitHubへpush済み。Supabaseプロジェクトは作成済みで、DBマイグレーションも適用済みです。Vercelへのデプロイと実運用設定はこれからです。**
+- `/admin`：公開物件数と反響数を確認します。反響数には物件問い合わせと希望条件リクエストの両方が含まれます。
+- `/admin/properties`：物件・写真を登録して公開します。
+- `/admin/leads`：すべての反響を新しい順に確認し、対応状況と内部メモを保存します。種類や対応状況で絞り込めます。
+- `/admin/settings`：通知先・送信元・受付状態を確認し、通知先にテストメールを送れます。APIキーの値は表示しません。
+- 旧 `/admin/requests` のリンクは、反響一覧の「希望条件リクエスト」に転送されます。
 
-- 本番ビルドとTypeScript検証：成功。
-- 検索・入力検証・DBマイグレーション・RLS・公開制御・問い合わせ更新・レート制限：ローカルで検証済み。
-- Supabase Auth、実Storage、実サービスでの完全なE2E：未検証。管理者アカウントは未登録です。
-- デスクトップ／モバイル実ブラウザーQA：プレビュー環境の接続制約により未完了。
-- GitHub: `https://github.com/eyueyu0806-sys/garage-house-navi`
-- Vercelへのデプロイ、独自ドメイン：未実施。
-- サーバー専用service role keyと運営会社情報：未設定。安全のため問い合わせフォームは無効です。
+GitHubはコード変更、Vercelは公開と秘密の設定、Supabaseは保存とログイン、Resendはメール配送を担当します。新しいサービスやDB設定は追加せず、日常の確認を管理画面へ集約しています。メール通知に失敗しても、保存済みの反響は管理画面で確認できます。
 
-画面確認用の架空物件は `DEMO_MODE=true` のときだけ表示します。デモ中は問い合わせ受付を停止し、画面上にサンプル表示・noindexを設定します。DB未接続時に保存成功を装う処理はありません。
+### メールの確認
+
+1. 「設定・動作確認」で通知先と送信元を確認します。
+2. 「通知先にテストメールを送る」を押します。実際の問い合わせデータは作成しません。
+3. エラーの場合は表示された理由を確認します。送信元認証の失敗はResendとDNSの設定が対象です。
+4. 送信受付に成功した場合は、通知先の受信箱・迷惑メールと送信IDで到着を確認します。送信受付は受信完了の証明ではありません。
+
+テスト送信は管理者だけが実行でき、通知先はサーバー側の登録済みアドレスに固定されます。同一管理者のテスト送信は1時間に10回までです。
+
+画面確認用の架空物件は `DEMO_MODE=true` のときだけ表示します。デモ中は問い合わせ受付を停止し、サンプル表示・noindexを設定します。DB未接続時に保存成功を装う処理はありません。
 
 ## 起動
 
@@ -39,8 +46,8 @@ npm start
 
 1. 接続済みSupabaseプロジェクトは `fgedwotipostbtadrxzz`（project URLはDashboardで確認）です。4件のDBマイグレーション適用と47都道府県データを確認済みです。既存プロジェクトへ同じSQLを再実行しないでください。
 2. 新規Supabaseプロジェクトを別途作る場合のみ、SQL Editorで `supabase/migrations/001_initial.sql` から `004_admin_predicate_invoker_wrapper.sql` まで順番に実行します。
-3. Supabase URL、publishable/anon key、service role keyを環境変数に設定します。service role keyはサーバー専用です。チャットやGitへ貼り付けず、Vercelの秘密の環境変数として設定します。ローカル `.env.local` にはURLとpublishable keyを設定済みですが、service role keyは未設定です。
-4. Supabase Authの公開サインアップを無効にします。DashboardのAuthenticationから管理者ユーザーを作成し、確認済みのメールアドレスとパスワードを設定します。現時点で `admin_profiles` に管理者は登録されていません。
+3. Supabase URL、publishable/anon key、service role keyを環境変数に設定します。service role keyはサーバー専用です。チャットやGitへ貼り付けず、Vercelの秘密の環境変数として設定します。各環境の設定は管理画面の「設定・動作確認」で確認します。
+4. Supabase Authの公開サインアップを無効にします。DashboardのAuthenticationから管理者ユーザーを作成し、確認済みのメールアドレスとパスワードを設定します。既存の管理者を作り直す必要はありません。
 5. そのAuthユーザーのUUIDを確認し、SQL Editorから次の登録を実行します。アプリ画面やユーザーの自己申告による管理者昇格はできません。
 
 ```sql
@@ -69,7 +76,7 @@ Storageの `property-images` バケットはマイグレーションで作成さ
 | RESEND_API_KEY | Resendのサーバー専用APIキー。VercelではSecretとして登録 |
 | LEAD_EMAIL_FROM | Resendで認証済みの送信元。例 `GARAGE HOUSE NAVI <no-reply@notify.example.jp>` |
 
-`NEXT_PUBLIC_SITE_URL` は送信元Origin検証にも使用します。VercelのPreviewとProductionには、それぞれ実際のホストを設定してください。localhostで確認する場合もポートを合わせます。
+`NEXT_PUBLIC_SITE_URL` は公式URL・メール内リンク・SEOに使用します。変更操作のOrigin検証は、実際にリクエストを受けたURLと同じOriginかどうかで判定します。
 
 会社情報・利用規約・プライバシーポリシーは構造とドラフトです。実際の運営会社、業態、委託先、個人情報の取扱い等に合わせて確認・確定してください。架空の会社名・免許番号は入れていません。フォームを有効にするには最低でも運営会社名・連絡先とサービスキーの設定が必要です。
 
@@ -153,3 +160,7 @@ TEST_BASE_URL=http://localhost:3000 node scripts/browser-check.mjs
 ## 画像
 
 `ASSET_CREDITS.md` 参照。ヒーローは海外住宅のイメージ写真であり、実際の掲載物件ではありません。実物件の写真は管理画面から登録してください。
+
+## 管理画面の動作確認
+
+`node scripts/admin-browser-check.mjs` は専用のローカル接続先と架空の管理者・反響を使います。必要なら先に `npx playwright install chromium` を実行します。認証・権限・一覧の統合・絞り込み・ページ送り・メール結果の表示・スマートフォンの横幅を確認します。実際のメールは送信せず、実Supabaseや本番データを書き換えません。
