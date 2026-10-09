@@ -1,3 +1,4 @@
+import {structuredDataJson} from '@/lib/structured-data';
 import type {Metadata} from 'next';
 import Link from 'next/link';
 import {notFound} from 'next/navigation';
@@ -17,7 +18,10 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     alternates: {canonical: url}, robots: {index: !demoMode(), follow: !demoMode()},
     openGraph: {type: 'article', title: article.title, description: article.description,
       url, siteName: 'GARAGE HOUSE NAVI', locale: 'ja_JP',
-      publishedTime: article.publishedAt, modifiedTime: article.updatedAt}};
+      images: article.image ? [{url: article.image, width: 1200, height: 630, alt: article.title}] : [],
+      publishedTime: article.publishedAt, modifiedTime: article.updatedAt},
+    twitter: {card: 'summary_large_image', title: article.title, description: article.description,
+      images: article.image ? [article.image] : []}};
 }
 export default async function Article({params}: Props) {
   const article = findPublishedArticle((await params).slug);
@@ -28,6 +32,7 @@ export default async function Article({params}: Props) {
     {'@type': 'BlogPosting', headline: article.title, description: article.description,
       datePublished: article.publishedAt, dateModified: article.updatedAt,
       mainEntityOfPage: url, inLanguage: 'ja',
+      ...(article.image ? {image: `${base}${article.image}`} : {}),
       author: {'@type': 'Organization', name: 'ASC不動産', url: `${base}/company`},
       publisher: {'@type': 'Organization', name: 'GARAGE HOUSE NAVI', url: base}},
     {'@type': 'BreadcrumbList', itemListElement: [
@@ -61,6 +66,6 @@ export default async function Article({params}: Props) {
         </div>
       </aside><Link className="text-link" href="/journal">GARAGE LIFE 一覧へ</Link>
     </article>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(schema).replace(/</g, '\u003c')}}/>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: structuredDataJson(schema)}}/>
   </div>;
 }
