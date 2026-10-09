@@ -1,11 +1,12 @@
 export type JournalArticle = {
   slug: string; title: string; description: string; status: 'draft' | 'published';
-  publishedAt: string; updatedAt: string; introduction: string;
+  publishedAt: string; updatedAt: string; introduction: string; image?: string;
   sections: {heading: string; paragraphs: string[]}[];
 };
 // Public routes and sitemap must use these selectors, never the raw collection.
 const articles: JournalArticle[] = [{
   slug: 'osaka-garage-house-guide',
+  image: '/social/osaka-guide-og.png',
   title: '大阪でガレージハウスを探すときに確認したい5つのこと',
   description: '大阪でガレージ付き賃貸を探す方へ。エリア、毎月の総額、ガレージの使い方、内見、問い合わせ前に整理したい希望条件を紹介します。',
   status: 'published', publishedAt: '2026-10-09', updatedAt: '2026-10-09',
