@@ -25,6 +25,7 @@ Official reference: https://developers.google.com/analytics/devguides/collection
   Submission IDs stay in the browser and are not sent to Analytics.
 - Campaign attribution is allowlisted: sources instagram/threads/google/facebook/tiktok,
   mediums organic_social/social/organic/referral/cpc, campaign launch_202610.
+  Contents profile/intro/checklist/request/osaka-guide distinguish placements.
   Add reviewed, non-personal campaign labels to the allowlist when needed.
 - Names, email, phone, form contents, search queries and URL fragments are excluded
   from application-generated events. Admin/API/auth/login and preview/local hosts

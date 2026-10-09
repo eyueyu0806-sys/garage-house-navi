@@ -45,6 +45,7 @@ export function analyticsCampaign(url: URL): Record<string, string> {
     source: ['instagram', 'threads', 'google', 'facebook', 'tiktok'],
     medium: ['organic_social', 'social', 'organic', 'referral', 'cpc'],
     name: ['launch_202610'],
+    content: ['profile', 'intro', 'checklist', 'request', 'osaka-guide'],
   };
   for (const [key, values] of Object.entries(allowed)) {
     const value = url.searchParams.get(`utm_${key === 'name' ? 'campaign' : key}`);
