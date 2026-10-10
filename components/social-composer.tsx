@@ -5,7 +5,7 @@ import {DELIVERY_LABELS,SOCIAL_LABELS} from '@/lib/social-content';
 import type {SocialDraft,SocialDelivery,SocialChannel} from '@/lib/social-content';
 
 type DraftResult={draft:SocialDraft;imageUrl:string;deliveries:SocialDelivery[]};
-type PropertyOption={id:string;property_name:string;property_code:string};
+type PropertyOption={id:string;property_name:string;property_code?:string};
 async function api(body:unknown):Promise<DraftResult>{
  const r=await fetch('/api/admin/social',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
  const data=await r.json();if(!r.ok)throw new Error(data.error||'処理できませんでした。');return data;
@@ -50,7 +50,7 @@ export function SocialComposer({properties,initialProperty,history,configured}:{
    <p className="muted">登録情報から文章を作り、メイン写真をSNS用の縦長画像に整えます。ここではSNSへ送信されません。</p>
    <label>公開物件<select value={propertyId} disabled={busy} onChange={e=>setPropertyId(e.target.value)}>
     <option value="">物件を選んでください</option>
-    {properties.map(p=><option key={p.id} value={p.id}>{p.property_code} · {p.property_name}</option>)}
+    {properties.map(p=><option key={p.id} value={p.id}>{p.property_name}</option>)}
    </select></label>
    <button type="button" className="button" disabled={busy||!propertyId} onClick={()=>run(async()=>{
     show(await api({action:'prepare',property_id:propertyId}));setMessage('投稿案を保存しました。文章・写真を確認してください。');router.refresh();

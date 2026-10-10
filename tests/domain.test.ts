@@ -29,7 +29,7 @@ test('numeric empty input is null, not misleading zero; admin fields cannot elev
  const parsed=propertySchema.parse({...demoProperties[0],garage_width_mm:5500,garage_depth_mm:6200,entrance_width_mm:2500,management_fee:'',is_admin:true});
  assert.equal(parsed.management_fee,null);assert.ok(!('is_admin' in parsed));
  for(const key of ['garage_width_mm','garage_depth_mm','garage_height_mm','entrance_width_mm','entrance_height_mm'])assert.ok(!(key in parsed));
- assert.deepEqual(GARAGE_FIELDS.map(({key})=>key),['garage_count','garage_type']);
+ assert.deepEqual(GARAGE_FIELDS.map(({key})=>key),['garage_count']);
 });
 test('Japanese property names use an ASCII property-code slug; city slug may be omitted',()=>{
  assert.deepEqual(normalizePropertySlugs('箕面ガレージハウス','GHN-001','箕面市'),{slug:'ghn-001',city_slug:''});

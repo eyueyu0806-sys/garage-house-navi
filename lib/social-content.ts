@@ -39,8 +39,8 @@ export function socialCopy(p:Property, baseUrl:string) {
  const heading=clean(p.catch_copy)||'愛車と暮らす、理想の住まいを。';
  const footer='募集状況・諸条件はお問い合わせください。\n運営：ASC不動産';
  const instagram=[
-  heading,clean(p.property_name),facts,'物件番号：'+clean(p.property_code),
-  '詳細・お問い合わせはプロフィールのサイトへ。\n物件番号をお伝えいただくとスムーズです。',
+  heading,clean(p.property_name),facts,
+  '詳細・お問い合わせはプロフィールのサイトへ。\n物件名をお伝えいただくとスムーズです。',
   footer,'#ガレージハウス #ガレージ付き賃貸 #ガレージハウスナビ',
  ].join('\n\n');
  const tail='\n\n詳細・お問い合わせ\n'+url+'\n\n'+footer;
