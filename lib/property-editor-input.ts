@@ -1,3 +1,4 @@
+import {monthlyFees} from './rent-months';
 import municipalities from './data/municipalities.json';
 import {PREFECTURES} from './constants';
 import {regions} from './regions';
@@ -28,7 +29,7 @@ export function prepareEditorInput(property:Record<string,unknown>,source:Record
  // Keep a legacy split address intact when the combined value is unchanged.
  const sameAddress=existing&&property.address===propertyAddress(existing);
  const location=sameAddress?{prefecture:existing.prefecture,city:existing.city,city_slug:existing.city_slug,town:existing.town,full_address:existing.full_address}:parsePropertyAddress(property.address);
- const fields={...property,...location,property_code:existing?.property_code||generated,slug:existing?.slug||generated.toLowerCase(),transaction_type:existing?.transaction_type||'媒介',garage_type:existing?.garage_type??null,description:existing?.description??null,other_features:existing?.other_features??null};
+ const fields={...property,...monthlyFees(property,existing),...location,property_code:existing?.property_code||generated,slug:existing?.slug||generated.toLowerCase(),transaction_type:existing?.transaction_type||'媒介',garage_type:existing?.garage_type??null,description:existing?.description??null,other_features:existing?.other_features??null};
  const sources={...source};
  for(const key of removedSourceFields)sources[key]=existingSource?.[key]??null;
  return {property:fields,source:sources};
