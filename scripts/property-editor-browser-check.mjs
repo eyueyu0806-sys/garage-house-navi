@@ -43,22 +43,28 @@ try{
  await page.getByLabel('物件名 *',{exact:true}).fill('動作確認用物件');
  await page.getByLabel('物件住所（都道府県から） *',{exact:true}).fill('大阪府大阪市北区梅田1丁目1-1');
  await page.getByLabel('月額賃料（円） *',{exact:true}).fill('150000');
+ await page.getByLabel('敷金（か月）',{exact:true}).fill('2');
+ await page.getByLabel('礼金（か月）',{exact:true}).fill('0.5');
  await page.getByRole('button',{name:'物件を保存する',exact:true}).click();
  await page.waitForURL('**/admin/properties/'+id);await page.getByRole('heading',{name:'物件を編集'}).waitFor();
  assert.equal(calls,1);assert.equal(saved.city,'大阪市');assert.equal(saved.city_slug,'osaka-city');assert.equal(saved.full_address,'北区梅田1丁目1-1');assert.equal(saved.transaction_type,'媒介');assert.match(saved.slug,/^ghn-[a-f0-9]{12}$/);
+ assert.equal(saved.deposit,300000);assert.equal(saved.key_money,75000);
  const slug=saved.slug,code=saved.property_code;
  // Legacy hidden fields must survive the next real API save.
  saved.description='既存の紹介文';saved.garage_type='既存タイプ';saved.other_features='既存設備';saved.transaction_type='一般媒介';source.contact_email='source@example.jp';source.ad_fee=123;source.original_url='https://example.jp/property';source.brokerage_terms='既存条件';source.internal_notes='既存メモ';
  await page.reload();
+ assert.equal(await page.getByLabel('敷金（か月）',{exact:true}).inputValue(),'2');
+ assert.equal(await page.getByLabel('礼金（か月）',{exact:true}).inputValue(),'0.5');
+ await page.getByLabel('月額賃料（円） *',{exact:true}).fill('160000');
  assert.equal(await page.getByLabel('物件住所（都道府県から） *',{exact:true}).inputValue(),'大阪府大阪市北区梅田1丁目1-1');
  await page.getByLabel('物件住所（都道府県から） *',{exact:true}).fill('兵庫県川西市栄町1丁目');
  await page.getByRole('button',{name:'物件を保存する',exact:true}).click();await page.getByRole('status').getByText('保存しました。',{exact:true}).waitFor();
- assert.equal(saved.slug,slug);assert.equal(saved.property_code,code);assert.equal(saved.city,'川西市');assert.equal(saved.prefecture,'hyogo');assert.equal(saved.city_slug,null);assert.equal(saved.town,null);assert.equal(saved.transaction_type,'一般媒介');assert.equal(saved.description,'既存の紹介文');assert.equal(source.contact_email,'source@example.jp');assert.equal(source.ad_fee,123);assert.equal(source.internal_notes,'既存メモ');
+ assert.equal(saved.deposit,320000);assert.equal(saved.key_money,80000);assert.equal(saved.slug,slug);assert.equal(saved.property_code,code);assert.equal(saved.city,'川西市');assert.equal(saved.prefecture,'hyogo');assert.equal(saved.city_slug,null);assert.equal(saved.town,null);assert.equal(saved.transaction_type,'一般媒介');assert.equal(saved.description,'既存の紹介文');assert.equal(source.contact_email,'source@example.jp');assert.equal(source.ad_fee,123);assert.equal(source.internal_notes,'既存メモ');
  await page.getByLabel('物件住所（都道府県から） *',{exact:true}).fill('川西市栄町');
  await page.getByRole('button',{name:'物件を保存する',exact:true}).click();await page.getByRole('status').getByText(/都道府県から入力/).waitFor();assert.equal(calls,2);
  await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.screenshot({path:'../property-editor-simple-mobile.png',fullPage:true});
  assert.deepEqual(errors,[]);
- console.log('PASS: actual editor -> API -> local save RPC -> edit; auto identifiers, single address, removed inputs, preservation of legacy fields/URL, invalid-address feedback, auth/CSRF, mobile. No production writes.');
+ console.log('PASS: actual editor -> API -> local save RPC -> edit; deposit/key money in months, decimal months and rent changes, auto identifiers, single address, removed inputs, preservation of legacy fields/URL, invalid-address feedback, auth/CSRF, mobile. No production writes.');
 }catch(error){console.error(logs.slice(-6000));throw error;}
 finally{if(browser)await browser.close();app.kill('SIGTERM');await Promise.race([once(app,'exit'),new Promise(r=>setTimeout(r,1000))]);if(app.exitCode===null)app.kill('SIGKILL');await new Promise(resolve=>db.close(resolve));}
