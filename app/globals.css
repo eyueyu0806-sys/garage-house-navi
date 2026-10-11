@@ -1,4 +1,44 @@
 @import "tailwindcss";
+/* Osaka: bundled SVG geography, ordinary links, no map SDK or API key. */
+.osaka-explorer{margin:40px 0 64px;scroll-margin-top:30px}
+.osaka-explorer .section-heading{margin-bottom:24px}
+.osaka-explorer-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.osaka-map-panel{background:#f0f1ec;padding:20px 24px 14px;min-width:0}
+.osaka-map-hint{display:flex;justify-content:space-between;gap:16px;font-size:.75rem;color:#53594f}
+.osaka-map-hint a{text-decoration:underline;white-space:nowrap}
+.osaka-map{display:block;width:100%;margin:auto;overflow:visible}
+.map-zoom-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.7rem;margin-top:14px;color:#53594f}
+.map-zoom-controls>div{display:flex;align-items:center;gap:4px}
+.map-zoom-controls button{width:44px;height:44px;border:1px solid #b8bfb0;background:#fafbf7;font-size:20px}
+.map-zoom-controls output{min-width:40px;text-align:center;font-variant-numeric:tabular-nums}
+.map-viewport{max-height:680px;overflow:auto;overscroll-behavior:contain}
+.map-zoom-canvas{margin:0 auto}
+.osaka-city-shape{fill:#d8dcd1;stroke:#fafbf7;stroke-width:1.5;vector-effect:non-scaling-stroke;transition:fill .15s}
+.osaka-map-city:hover .osaka-city-shape,.osaka-map-city:focus .osaka-city-shape{fill:#646e59;stroke:#222522;stroke-width:2}
+.osaka-map-city:focus{outline:none}
+.osaka-city-label{font-size:11px;fill:#242a23;text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:#f0f1ec;stroke-width:2px;stroke-linejoin:round}
+.osaka-label-line{fill:none;stroke:#555e4e;stroke-width:.8;pointer-events:none}
+.osaka-map-label-link:hover .osaka-city-label{font-weight:700;stroke:#fff;stroke-width:3px}
+.osaka-bay{fill:#72796c;font-size:12px;letter-spacing:3px}
+.osaka-compass{fill:#555e4e;text-anchor:middle;font-size:12px}
+.osaka-compass path{stroke:#555e4e;fill:none}
+.osaka-map-credit{font-size:.65rem;color:#53594f;line-height:1.7;margin:6px 0 0}
+.osaka-map-credit a{text-decoration:underline}
+.osaka-city-list{padding:24px 28px;min-width:0}
+.osaka-list-intro{font-size:.8rem;color:var(--muted);margin-bottom:18px}
+.osaka-city-group{margin-bottom:16px}
+.osaka-city-group:last-child{margin-bottom:0}
+.osaka-city-group h3{font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--line);margin:0 0 6px;padding-bottom:6px}
+.osaka-city-group>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:12px}
+.osaka-city-group a{display:flex;align-items:center;justify-content:space-between;gap:2px;min-height:44px;font-size:.82rem;border-bottom:1px solid transparent}
+.osaka-city-group a span{color:var(--muted);font-size:.65rem}
+.osaka-city-group a:hover,.osaka-city-group a:focus-visible{border-bottom-color:var(--ink);background:#eceee7}
+.osaka-map-help{font-size:.85rem;margin:16px 0 0;color:var(--muted)}
+.osaka-map-help a{text-decoration:underline;color:var(--ink)}
+.search-map-link{display:flex;flex-wrap:wrap;gap:8px 20px;margin:18px 0;font-size:.8rem}
+.search-map-link span{color:var(--muted)}
+@media(max-width:900px){.osaka-explorer-grid{grid-template-columns:1fr}.osaka-map-panel{padding:16px 10px 12px}.map-viewport{max-height:560px}.osaka-city-list{padding:24px 0}.osaka-city-group>div{grid-template-columns:repeat(4,minmax(0,1fr))}.osaka-explorer{margin:28px 0 40px}}
+@media(max-width:520px){.osaka-map-hint{font-size:.65rem;gap:8px}.osaka-city-group>div{grid-template-columns:repeat(3,minmax(0,1fr))}.osaka-city-group a{font-size:.83rem;min-height:46px}.osaka-explorer .section-heading{align-items:start;gap:14px}.osaka-map-help{line-height:1.9}.osaka-city-label{font-size:12px}}
 /* Daily administration: actions and long contact values remain usable on mobile. */
 .admin-shortcuts{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0}
 .admin-main .facts-table dd{overflow-wrap:anywhere}
