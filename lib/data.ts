@@ -5,6 +5,7 @@ import {configured,demoMode} from './config';
 import {demoProperties} from './demo';
 import {FEATURES} from './constants';
 import {parseSearch,filterDemo} from './search';
+import {citySearchValues} from './osaka';
 import type {Property,Query} from './types';
 export async function attachImages(rows:Property[],options:{coverOnly?:boolean}={}) {
  if(!rows.length)return rows;
@@ -23,7 +24,8 @@ export async function getProperties(raw:Query={},options:{featured?:boolean;limi
  if(!configured())return {items:[] as Property[],count:0,query:q};
  const db=await supabase();
  let req=db.from('properties').select('*, property_images(*)',{count:'exact'}).eq('status','published');
- for(const key of ['prefecture','city','city_slug','layout'])if(q[key])req=req.eq(key,q[key]);
+ for(const key of ['prefecture','city_slug','layout'])if(q[key])req=req.eq(key,q[key]);
+ if(q.city)req=req.in('city',citySearchValues(q.prefecture,q.city));
  for(const [key,col] of Object.entries({min_rent:'rent',min_area:'floor_area',garage_count:'garage_count'}))if(q[key])req=req.gte(col,Number(q[key]));
  for(const [key,col] of Object.entries({max_rent:'rent',max_area:'floor_area',walking_minutes:'walking_minutes'}))if(q[key])req=req.lte(col,Number(q[key]));
  if(q.built_after)req=req.gte('built_at',`${Math.max(1800,Math.min(2200,Number(q.built_after)))}-01-01`);
