@@ -41,6 +41,9 @@ test('Buffer reads actual post status and paginates history without leaking auth
  assert.equal((await c.post('post-1')).status,'scheduled');
  assert.equal((await c.recentPosts('org',['ig'],'2026-10-01T00:00:00Z')).length,2);
  assert.equal(requests[2].variables.after,'cursor');assert.doesNotMatch(JSON.stringify(requests),/private-key/);
+ assert.deepEqual(requests[1].variables.input.filter.dueAt,{start:'2026-10-01T00:00:00Z'});
+ assert.ok(requests[1].variables.input.filter.status.includes('sent'));
+ assert.ok(requests[1].variables.input.filter.status.includes('scheduled'));
  const excessive=new BufferClient('key',async()=>Response.json({data:{posts:{edges:[],pageInfo:{hasNextPage:true,endCursor:'cursor'}}}}));
  await assert.rejects(()=>excessive.recentPosts('org',['ig'],'2026-10-01T00:00:00Z'));
 });
