@@ -24,8 +24,11 @@ Official reference: https://developers.google.com/analytics/devguides/collection
 - Duplicate callbacks for a submission are suppressed in memory and session storage.
   Submission IDs stay in the browser and are not sent to Analytics.
 - Campaign attribution is allowlisted: sources instagram/threads/google/facebook/tiktok,
-  mediums organic_social/social/organic/referral/cpc, campaign launch_202610.
-  Contents profile/intro/checklist/request/osaka-guide distinguish placements.
+  mediums organic_social/social/organic/referral/cpc, campaigns launch_202610,
+  property and 202610_week2.
+  Contents profile/intro/introduction/checklist/request/osaka-guide/guide distinguish placements.
+  Property campaigns also retain three-digit legacy IDs and generated ghn- IDs
+  only when utm_content exactly matches the current property route.
   Add reviewed, non-personal campaign labels to the allowlist when needed.
 - Names, email, phone, form contents, search queries and URL fragments are excluded
   from application-generated events. Admin/API/auth/login and preview/local hosts

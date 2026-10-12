@@ -44,12 +44,20 @@ export function analyticsCampaign(url: URL): Record<string, string> {
   const allowed: Record<string, string[]> = {
     source: ['instagram', 'threads', 'google', 'facebook', 'tiktok'],
     medium: ['organic_social', 'social', 'organic', 'referral', 'cpc'],
-    name: ['launch_202610'],
-    content: ['profile', 'intro', 'checklist', 'request', 'osaka-guide'],
+    name: ['launch_202610', 'property', '202610_week2'],
+    content: ['profile', 'intro', 'introduction', 'checklist', 'request', 'osaka-guide', 'guide'],
   };
   for (const [key, values] of Object.entries(allowed)) {
     const value = url.searchParams.get(`utm_${key === 'name' ? 'campaign' : key}`);
     if (value && values.includes(value)) result[`campaign_${key}`] = value;
+  }
+  // Only accept the site's numeric legacy IDs or generated opaque property IDs,
+  // and only when they match the property being opened. Never forward arbitrary
+  // utm_content values such as customer names, email addresses or phone numbers.
+  const propertySlug = url.pathname.match(/^\/properties\/(\d{3}|ghn-[a-f0-9]{12})\/?$/)?.[1];
+  if (propertySlug && url.searchParams.get('utm_content') === propertySlug
+      && ['property', '202610_week2'].includes(url.searchParams.get('utm_campaign') || '')) {
+    result.campaign_content = propertySlug;
   }
   return result;
 }

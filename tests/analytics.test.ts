@@ -50,3 +50,18 @@ test('page views, lead deduplication, admin exclusion and analytics failures', (
     assert.doesNotThrow(() => trackSavedLead('request', 'blocked'));
   } finally { Object.assign(globalThis, original); }
 });
+
+test('social property and weekly links retain attribution without accepting arbitrary content', () => {
+  for (const slug of ['005', '008', 'ghn-8e308a30c781']) {
+    for (const campaign of ['property', '202610_week2']) {
+      const result = analyticsCampaign(new URL(`https://garagehouse-navi.com/properties/${slug}?utm_source=threads&utm_medium=organic_social&utm_campaign=${campaign}&utm_content=${slug}`));
+      assert.deepEqual(result, {campaign_source:'threads', campaign_medium:'organic_social', campaign_name:campaign, campaign_content:slug});
+    }
+  }
+  for (const content of ['private@example.com', '09012345678', 'customer-name', '008']) {
+    const result = analyticsCampaign(new URL(`https://garagehouse-navi.com/properties/005?utm_campaign=property&utm_content=${content}`));
+    assert.equal(result.campaign_content, undefined);
+  }
+  assert.equal(analyticsCampaign(new URL('https://garagehouse-navi.com/?utm_campaign=property&utm_content=005')).campaign_content, undefined);
+  assert.equal(analyticsCampaign(new URL('https://garagehouse-navi.com/?utm_campaign=202610_week2&utm_content=introduction')).campaign_content, 'introduction');
+});
