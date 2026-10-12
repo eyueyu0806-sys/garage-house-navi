@@ -16,9 +16,11 @@ export type SocialDraft = {
 export type SocialDelivery = {
  id:string; draft_id:string; channel_id:string; channel_name:string; service:SocialService;
  status:string; buffer_post_id:string|null; error_message:string|null; due_at:string;
+ provider_status?:string|null; provider_checked_at?:string|null; published_at?:string|null; published_url?:string|null;
 };
 export type SocialChannel = {
  id:string; name:string; service:SocialService; organizationName:string;
+ organizationId?:string;
  isDisconnected:boolean; isLocked:boolean; isQueuePaused:boolean; timezone:string;
 };
 const clean = (s:string|null|undefined) => (s||'').replace(/[\r\n\t]+/g,' ').trim();

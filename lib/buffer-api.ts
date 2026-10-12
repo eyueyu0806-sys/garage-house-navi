@@ -1,5 +1,6 @@
 // Only server modules may instantiate this client with a secret.
 import type {SocialChannel,SocialService} from './social-content';
+export type BufferPost={id:string;status:string;channelId:string;text:string|null;dueAt:string|null;sentAt:string|null;externalLink:string|null};
 
 export class BufferFailure extends Error {
  constructor(message:string,public uncertain=false){super(message);}
@@ -32,9 +33,27 @@ export class BufferClient {
    const data=await this.query<{channels:Omit<SocialChannel,'organizationName'>[]}>(
     'query Channels($input:ChannelsInput!){channels(input:$input){id name service isDisconnected isLocked isQueuePaused timezone}}',
     {input:{organizationId:org.id}});
-   for(const c of data.channels)if(c.service==='instagram'||c.service==='threads')result.push({...c,organizationName:org.name});
+   for(const c of data.channels)if(c.service==='instagram'||c.service==='threads')result.push({...c,organizationName:org.name,organizationId:org.id});
   }
   return result;
+ }
+ async post(id:string):Promise<BufferPost>{
+  const data=await this.query<{post:BufferPost}>('query Post($input:PostInput!){post(input:$input){id status channelId text dueAt sentAt externalLink}}',{input:{id}});
+  if(!data.post?.id)throw new BufferFailure('投稿結果を確認できませんでした。');
+  return data.post;
+ }
+ async recentPosts(organizationId:string,channelIds:string[],since:string):Promise<BufferPost[]>{
+  const result:BufferPost[]=[];let after:string|null=null;
+  for(let page=0;page<5;page++){
+   const data: {posts:{edges:{node:BufferPost}[];pageInfo:{hasNextPage:boolean;endCursor:string|null}}}=await this.query(
+    'query Posts($input:PostsInput!,$after:String){posts(input:$input,first:100,after:$after){edges{node{id status channelId text dueAt sentAt externalLink}}pageInfo{hasNextPage endCursor}}}',
+    {input:{organizationId,filter:{channelIds,startDate:since}},after});
+   result.push(...data.posts.edges.map(e=>e.node));
+   if(!data.posts.pageInfo.hasNextPage)return result;
+   after=data.posts.pageInfo.endCursor;
+   if(!after)break;
+  }
+  throw new BufferFailure('投稿履歴をすべて確認できないため自動予約を停止しました。');
  }
  async schedule(input:{channelId:string;service:SocialService;text:string;imageUrl:string;dueAt:string}){
   const payload={
