@@ -37,7 +37,7 @@ export async function draftResponse(draft:SocialDraft){
  if(error||de)throw new Error('投稿案を読み込めませんでした。');
  return {draft,imageUrl:preview!.signedUrl,deliveries:deliveries as SocialDelivery[]};
 }
-export async function prepareSocial(id:string,adminId:string){
+export async function prepareSocial(id:string,adminId:string|null){
  const p=await loadSocialProperty(id),version=propertyVersion(p),db=serviceDb();
  const {data:existing,error:lookup}=await db.from('social_drafts').select('*').eq('property_id',id).eq('property_version',version).maybeSingle();
  if(lookup)throw new Error('SNS投稿の保存先を確認してください。');
