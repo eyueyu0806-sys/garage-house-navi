@@ -24,6 +24,7 @@ export async function runSocialAutopilot(monitorOnly=false){
   const {data:receipts,error:receiptError}=await db.from('social_deliveries').select('*').order('created_at',{ascending:false}).limit(100);
   if(receiptError)throw new Error('予約履歴を確認できませんでした。');
   const observations:Record<string,unknown>[]=[];
+  const confirmedPosts:BufferPost[]=[];
   // Check all unsettled receipts and recent published receipts; keep the last known
   // observation on read failure, with a separate failure timestamp/message.
   const recentCutoff=new Date(now-30*86400000).toISOString();
@@ -35,6 +36,7 @@ export async function runSocialAutopilot(monitorOnly=false){
     try{
      const post=await client.post(row.buffer_post_id);
      if(post.channelId!==row.channel_id)throw new Error('投稿先が一致しません。');
+     confirmedPosts.push(post);
      const {error}=await db.from('social_deliveries').update(postObservation(post)).eq('id',row.id);
      if(error)throw new Error('結果を保存できませんでした。');
      return {id:row.id,buffer_post_id:post.id,service:row.service,status:post.status,due_at:post.dueAt,
@@ -59,7 +61,15 @@ export async function runSocialAutopilot(monitorOnly=false){
    if(!org)throw new Error('投稿先の組織を確認できませんでした。');
    history.push(...await client.recentPosts(org,configured.filter(c=>c.organizationId===org).map(c=>c.id),recentCutoff));
   }
+  const listedIds=new Set(history.map(p=>p.id));
+  const missing=confirmedPosts.filter(p=>p.dueAt&&p.dueAt>=recentCutoff&&!listedIds.has(p.id));
+  // A filtered list must include known posts in its own interval. An empty or
+  // incomplete provider list is not evidence that the account has no posts.
+  report.history_count=history.length;
+  report.history_consistent=missing.length===0;
+  for(const post of missing)history.push(post);
   report.upcoming=history.filter(p=>['scheduled','sending'].includes(p.status)).map(({id,channelId,dueAt,status})=>({id,channelId,dueAt,status}));
+  if(missing.length){report.history_warning='投稿一覧と個別確認が一致しないため、新規予約を保留します。';status='attention';}
   const [{data:properties,error:pe},{data:used,error:ue},{data:slot,error:se}]=await Promise.all([
    db.from('properties').select('id,property_name,slug,next_update_at').eq('status','published').gte('next_update_at',jstDate(dueAt)).order('information_checked_at',{ascending:false}),
    db.from('social_drafts').select('property_id').eq('status','locked'),

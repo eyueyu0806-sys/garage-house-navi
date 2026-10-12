@@ -47,7 +47,7 @@ export class BufferClient {
   for(let page=0;page<5;page++){
    const data: {posts:{edges:{node:BufferPost}[];pageInfo:{hasNextPage:boolean;endCursor:string|null}}}=await this.query(
     'query Posts($input:PostsInput!,$after:String){posts(input:$input,first:100,after:$after){edges{node{id status channelId text dueAt sentAt externalLink}}pageInfo{hasNextPage endCursor}}}',
-    {input:{organizationId,filter:{channelIds,startDate:since}},after});
+    {input:{organizationId,filter:{channelIds,status:['sent','scheduled','sending','error','draft','needs_approval'],dueAt:{start:since}}},after});
    result.push(...data.posts.edges.map(e=>e.node));
    if(!data.posts.pageInfo.hasNextPage)return result;
    after=data.posts.pageInfo.endCursor;
