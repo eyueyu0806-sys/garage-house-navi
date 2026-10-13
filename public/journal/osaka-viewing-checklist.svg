@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウス内見チェックリスト</title>
+  <desc id="desc">道路、入庫、設備、生活、ルール、防災の6つの確認項目を示す編集部作成の図解</desc>
+  <rect width="1200" height="630" fill="#f3f2ed"/>
+  <rect x="0" y="0" width="38" height="630" fill="#222522"/>
+  <text x="92" y="82" fill="#62675f" font-family="Arial, sans-serif" font-size="18" letter-spacing="5">GARAGE LIFE / OSAKA</text>
+  <text x="92" y="152" fill="#222522" font-family="Arial, sans-serif" font-size="42" font-weight="600" letter-spacing="1">GARAGE HOUSE</text>
+  <text x="92" y="207" fill="#222522" font-family="Arial, sans-serif" font-size="42" font-weight="600" letter-spacing="1">VIEWING CHECKLIST</text>
+  <text x="92" y="258" fill="#62675f" font-family="Arial, sans-serif" font-size="21" letter-spacing="2">6 POINTS TO CHECK ON SITE</text>
+  <g transform="translate(690 70)" stroke="#222522" fill="none">
+    <rect x="0" y="0" width="410" height="395" stroke-width="3"/>
+    <path d="M0 282h410M270 0v282M0 112h270" stroke-width="2"/>
+    <path d="M34 238c0-45 29-82 74-94h76c44 12 72 49 72 94v22H34z" stroke-width="4"/>
+    <path d="M78 144l21-48h96l24 48M88 238h114M64 198h162" stroke-width="3"/>
+    <circle cx="83" cy="255" r="20" fill="#f3f2ed" stroke-width="4"/><circle cx="208" cy="255" r="20" fill="#f3f2ed" stroke-width="4"/>
+    <path d="M145 395v76m-13-17 13 17 13-17" stroke-width="4"/>
+    <text x="188" y="438" fill="#62675f" stroke="none" font-family="Arial, sans-serif" font-size="14" letter-spacing="3">CHECK THE FLOW</text>
+  </g>
+  <g font-family="Arial, 'Noto Sans JP', sans-serif" font-size="15">
+    <g transform="translate(92 352)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">01</text><text x="58" y="32" fill="#222522" font-weight="600">ROUTE</text></g>
+    <g transform="translate(282 352)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">02</text><text x="58" y="32" fill="#222522" font-weight="600">ENTRY</text></g>
+    <g transform="translate(472 352)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">03</text><text x="58" y="32" fill="#222522" font-weight="600">OPERATION</text></g>
+    <g transform="translate(92 455)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">04</text><text x="58" y="32" fill="#222522" font-weight="600">EQUIPMENT</text></g>
+    <g transform="translate(282 455)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">05</text><text x="58" y="32" fill="#222522" font-weight="600">RULES</text></g>
+    <g transform="translate(472 455)"><circle cx="23" cy="23" r="23" fill="#222522"/><text x="23" y="29" fill="#fff" text-anchor="middle">06</text><text x="58" y="32" fill="#222522" font-weight="600">RISK &amp; NOTES</text></g>
+  </g>
+  <line x1="92" y1="567" x2="1100" y2="567" stroke="#c9ccc5"/>
+  <text x="92" y="599" fill="#62675f" font-family="Arial, sans-serif" font-size="15" letter-spacing="2">GARAGE HOUSE NAVI</text>
+  <text x="1100" y="599" fill="#62675f" font-family="Arial, sans-serif" font-size="14" text-anchor="end" letter-spacing="1">ORIGINAL EDITORIAL GRAPHIC</text>
+</svg>
