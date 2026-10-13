@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {Breadcrumb, RequestCTA} from '@/components/site-shell';
 import {demoMode} from '@/lib/config';
 import {publishedArticles} from '@/lib/journal';
@@ -18,6 +19,9 @@ export default function Journal() {
       <h1>GARAGE LIFE</h1><p>ガレージの先に、広がる暮らし。</p></div>
     <div className="journal-list">
       {articles.map(article => <article key={article.slug} className="journal-summary">
+        {article.image && <Link className="journal-card-image" href={`/journal/${article.slug}`} tabIndex={-1} aria-hidden="true">
+          <Image src={article.image} alt="" width={1200} height={630} sizes="(max-width: 960px) 100vw, 900px"/>
+        </Link>}
         <p className="eyebrow">住まいの選び方</p>
         <h2><Link href={`/journal/${article.slug}`}>{article.title}</Link></h2>
         <p>{article.description}</p>
