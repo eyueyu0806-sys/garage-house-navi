@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ガレージハウスの費用を3つの支払時期で整理</title>
+  <desc id="desc">入居前・毎月・更新や退去時の3分類を、見積書と時系列で示す編集部制作図解。実際の金額や見積書ではありません。</desc>
+  <rect width="1200" height="630" fill="#f3f2ed"/>
+  <rect width="1200" height="12" fill="#222522"/>
+  <g font-family="Arial, sans-serif" fill="#222522">
+    <text x="64" y="65" font-size="16" letter-spacing="4" fill="#62675f">GARAGE LIFE / OSAKA</text>
+    <text x="64" y="126" font-size="42" font-weight="600" letter-spacing="1">A CLEARER VIEW OF COSTS.</text>
+    <text x="64" y="163" font-size="18" letter-spacing="1" fill="#62675f">ONE ESTIMATE. THREE PAYMENT MOMENTS.</text>
+    <g transform="translate(65 208)">
+      <rect width="330" height="276" fill="#fff" stroke="#c9ccc5"/>
+      <rect width="330" height="61" fill="#222522"/>
+      <text x="23" y="40" fill="#fff" font-size="27">01</text>
+      <text x="82" y="38" fill="#fff" font-size="20" letter-spacing="2">BEFORE MOVE-IN</text>
+      <path d="M28 91h30l14 14v55H28z M58 91v16h14 M39 122h21 M39 134h21 M39 146h14" fill="none" stroke="#62675f" stroke-width="2"/>
+      <text x="94" y="119" font-size="18">UPFRONT PAYMENT</text>
+      <text x="94" y="146" font-size="15" fill="#62675f">Check each line item</text>
+      <path d="M24 183h282 M24 229h282" stroke="#dfe2dc"/>
+      <text x="24" y="210" font-size="16">Deposit / fees / prepaid rent</text>
+      <text x="24" y="256" font-size="14" fill="#62675f">Confirm dates and refund terms</text>
+    </g>
+    <g transform="translate(435 208)">
+      <rect width="330" height="276" fill="#fff" stroke="#c9ccc5"/>
+      <rect width="330" height="61" fill="#222522"/>
+      <text x="23" y="40" fill="#fff" font-size="27">02</text>
+      <text x="82" y="38" fill="#fff" font-size="20" letter-spacing="2">EVERY MONTH</text>
+      <g fill="none" stroke="#62675f" stroke-width="2"><rect x="27" y="99" width="49" height="54"/><path d="M27 114h49 M38 92v14 M65 92v14 M38 126h6 M54 126h6 M38 140h6 M54 140h6"/></g>
+      <text x="94" y="119" font-size="18">MONTHLY TOTAL</text>
+      <text x="94" y="146" font-size="15" fill="#62675f">Not just the rent</text>
+      <path d="M24 183h282 M24 229h282" stroke="#dfe2dc"/>
+      <text x="24" y="210" font-size="16">Rent / management / parking</text>
+      <text x="24" y="256" font-size="14" fill="#62675f">Check what the garage includes</text>
+    </g>
+    <g transform="translate(805 208)">
+      <rect width="330" height="276" fill="#fff" stroke="#c9ccc5"/>
+      <rect width="330" height="61" fill="#222522"/>
+      <text x="23" y="40" fill="#fff" font-size="27">03</text>
+      <text x="82" y="38" fill="#fff" font-size="20" letter-spacing="2">LATER ON</text>
+      <g fill="none" stroke="#62675f" stroke-width="2"><circle cx="51" cy="125" r="27"/><path d="M51 105v22l15 9 M70 97l8 12h-15"/></g>
+      <text x="94" y="119" font-size="18">FUTURE CONDITIONS</text>
+      <text x="94" y="146" font-size="15" fill="#62675f">Read before signing</text>
+      <path d="M24 183h282 M24 229h282" stroke="#dfe2dc"/>
+      <text x="24" y="210" font-size="16">Renewal / move-out / cancellation</text>
+      <text x="24" y="256" font-size="14" fill="#62675f">Confirm if and when costs apply</text>
+    </g>
+    <path d="M65 520h1070" stroke="#c9ccc5"/>
+    <text x="65" y="551" font-size="16" fill="#62675f">COMPARE THE SAME MOVE-IN DATE AND THE SAME GARAGE USE.</text>
+    <text x="65" y="598" font-size="14" letter-spacing="2">GARAGE HOUSE NAVI</text>
+    <text x="1135" y="598" font-size="12" letter-spacing="1" text-anchor="end" fill="#62675f">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY QUOTATION</text>
+  </g>
+</svg>

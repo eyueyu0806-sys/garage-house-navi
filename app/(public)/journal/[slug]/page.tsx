@@ -19,7 +19,7 @@ export async function generateMetadata({params}: Props): Promise<Metadata> {
     alternates: {canonical: url}, robots: {index: !demoMode(), follow: !demoMode()},
     openGraph: {type: 'article', title: article.title, description: article.description,
       url, siteName: 'GARAGE HOUSE NAVI', locale: 'ja_JP',
-      images: article.image ? [{url: article.image, width: 1200, height: 630, alt: article.title}] : [],
+      images: article.image ? [{url: article.image, width: 1200, height: 630, alt: article.imageAlt || article.title}] : [],
       publishedTime: article.publishedAt, modifiedTime: article.updatedAt},
     twitter: {card: 'summary_large_image', title: article.title, description: article.description,
       images: article.image ? [article.image] : []}};
@@ -28,6 +28,10 @@ export default async function Article({params}: Props) {
   const article = findPublishedArticle((await params).slug);
   if (!article) notFound();
   const base = siteUrl();
+  const related = (article.relatedSlugs || []).flatMap(slug => {
+    const item = findPublishedArticle(slug);
+    return item && item.slug !== article.slug ? [item] : [];
+  });
   const url = `${base}/journal/${article.slug}`;
   const schema = {'@context': 'https://schema.org', '@graph': [
     {'@type': 'BlogPosting', headline: article.title, description: article.description,
@@ -62,19 +66,31 @@ export default async function Article({params}: Props) {
       </nav>
       {article.sections.map((section, i) => <section key={section.heading} id={`section-${i + 1}`}>
         <h2>{section.heading}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+        {section.table && <div className="journal-table-wrap" role="region" aria-label={section.table.caption} tabIndex={0}>
+          <table className="journal-table">
+            <caption>{section.table.caption}</caption>
+            <thead><tr>{section.table.headers.map(header => <th key={header} scope="col">{header}</th>)}</tr></thead>
+            <tbody>{section.table.rows.map(row => <tr key={row[0]}>{row.map((cell, index) => index === 0
+              ? <th key={index} scope="row">{cell}</th> : <td key={index}>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>}
       </section>)}
-      {article.checklist && <section className="journal-checklist" aria-labelledby="viewing-checklist-heading">
-        <h2 id="viewing-checklist-heading">内見前後に使えるチェックリスト</h2>
+      {article.checklist && <section className="journal-checklist" aria-labelledby="article-checklist-heading">
+        <h2 id="article-checklist-heading">{article.checklistHeading || '内見前後に使えるチェックリスト'}</h2>
         <ul>{article.checklist.map(item => <li key={item}>{item}</li>)}</ul>
       </section>}
       {article.sources && <aside className="journal-sources" aria-labelledby="sources-heading">
         <h2 id="sources-heading">参考にした公的情報</h2>
-        <p>各ページは記事更新日の2026年10月13日に確認しました。最新情報はリンク先でご確認ください。</p>
+        <p>確認日は各リンクに記載しています。最新情報はリンク先でご確認ください。</p>
         <ul>{article.sources.map(source => <li key={source.url}>
           <a href={source.url} target="_blank" rel="noreferrer">{source.label}</a>
           <span>（確認日 {source.checkedAt}）</span>
         </li>)}</ul>
       </aside>}
+      {related.length > 0 && <nav className="journal-related" aria-label="関連記事">
+        <h2>あわせて読みたい</h2>
+        <ul>{related.map(item => <li key={item.slug}><Link href={`/journal/${item.slug}`}>{item.title}</Link></li>)}</ul>
+      </nav>}
       <aside className="journal-next" aria-label="物件探しのご案内">
         <h2>大阪で、愛車と暮らす住まいを探す</h2>
         <p>現在の募集条件は、各物件ページとお問い合わせ時にご確認ください。</p>
