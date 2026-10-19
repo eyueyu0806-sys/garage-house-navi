@@ -57,3 +57,28 @@ test('viewing checklist article links only to HTTPS public sources', () => {
     assert.equal(source.checkedAt, article.updatedAt);
   }
 });
+
+test('rental process article includes safe application guidance, official sources and original image', () => {
+  const article = findPublishedArticle('osaka-garage-house-rental-process');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-10-19');
+  assert.ok(article.title.includes('問い合わせから契約前'));
+  assert.equal(article.checklist?.length, 8);
+  assert.ok(article.sections.length >= 6);
+  assert.ok(article.sections.some(section => section.heading.includes('申込みは')));
+  assert.ok(article.sections.some(section => section.paragraphs.some(text => text.includes('契約は成立していない'))));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('特定の物件'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 3);
+  for (const source of article.sources ?? []) {
+    assert.equal(new URL(source.url).protocol, 'https:');
+    assert.ok(['www.pref.osaka.lg.jp', 'www.mlit.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
