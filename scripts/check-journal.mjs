@@ -35,6 +35,15 @@ try {
     assert.ok(!(await page.locator('.journal-sources').textContent()).includes('2026年10月13日'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-10-16');
   }
+  if(slug==='osaka-garage-house-rental-process'){
+    assert.equal(await page.locator('.journal-checklist li').count(),8);
+    assert.equal(await page.locator('.journal-sources li').count(),3);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('申込み・契約'));
+    assert.ok((await page.locator('article').textContent()).includes('預り金'));
+    assert.ok((await page.locator('article').textContent()).includes('契約は成立していない'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-10-19');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');
