@@ -82,3 +82,30 @@ test('rental process article includes safe application guidance, official source
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('lease types article compares renewal and re-contract without promising availability', () => {
+  const article = findPublishedArticle('osaka-garage-house-ordinary-fixed-term-lease');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-10-22');
+  assert.ok(article.title.includes('普通借家と定期借家'));
+  assert.equal(article.checklist?.length, 9);
+  assert.ok(article.sections.length >= 6);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  assert.ok(article.sections.some(section => section.paragraphs.some(text => text.includes('再契約は自動的な更新ではなく'))));
+  assert.ok(article.sections.some(section => section.paragraphs.some(text => text.includes('将来の再契約が確約'))));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('特定の物件・契約'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 3);
+  for (const source of article.sources ?? []) {
+    assert.equal(new URL(source.url).hostname, 'www.mlit.go.jp');
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
