@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">普通借家と定期借家の確認ポイント</title>
+  <desc id="desc">普通借家は更新条件、定期借家は終了日と再契約条件を確認することを示す編集部制作の比較図。特定の契約を表すものではありません。</desc>
+  <rect width="1200" height="630" fill="#f3f2ed"/>
+  <rect width="1200" height="12" fill="#222522"/>
+  <g font-family="Arial, sans-serif" fill="#222522">
+    <text x="64" y="62" font-size="16" letter-spacing="4" fill="#62675f">GARAGE LIFE / OSAKA</text>
+    <text x="64" y="124" font-size="40" font-weight="600" letter-spacing="1">READ THE LEASE TYPE FIRST.</text>
+    <text x="64" y="161" font-size="18" letter-spacing="1" fill="#62675f">THE SAME TERM CAN LEAD TO A DIFFERENT NEXT STEP.</text>
+    <g transform="translate(65 211)">
+      <rect width="515" height="276" fill="#fff" stroke="#c9ccc5"/>
+      <rect width="515" height="59" fill="#222522"/>
+      <text x="24" y="39" fill="#fff" font-size="19" letter-spacing="2">ORDINARY LEASE</text>
+      <g transform="translate(29 90)" fill="none" stroke="#62675f" stroke-width="3">
+        <circle cx="45" cy="45" r="37"/>
+        <path d="M45 18v28l20 12 M79 21v24H55"/>
+      </g>
+      <text x="135" y="111" font-size="22" font-weight="600">CHECK RENEWAL TERMS</text>
+      <text x="135" y="143" font-size="16" fill="#62675f">Timing / process / cost</text>
+      <path d="M29 177h457" stroke="#dfe2dc"/>
+      <text x="29" y="208" font-size="16">Ask what happens when the term ends.</text>
+      <text x="29" y="241" font-size="14" fill="#62675f">Confirm the actual contract, not the label alone.</text>
+    </g>
+    <g transform="translate(620 211)">
+      <rect width="515" height="276" fill="#fff" stroke="#c9ccc5"/>
+      <rect width="515" height="59" fill="#222522"/>
+      <text x="24" y="39" fill="#fff" font-size="19" letter-spacing="2">FIXED-TERM LEASE</text>
+      <g transform="translate(29 90)" fill="none" stroke="#62675f" stroke-width="3">
+        <path d="M9 12h72v67H9z M9 30h72 M26 5v16 M64 5v16"/>
+        <path d="M29 51h31 M29 63h21"/>
+      </g>
+      <text x="135" y="111" font-size="22" font-weight="600">CHECK THE END DATE</text>
+      <text x="135" y="143" font-size="16" fill="#62675f">End / re-contract / exit terms</text>
+      <path d="M29 177h457" stroke="#dfe2dc"/>
+      <text x="29" y="208" font-size="16">Re-contract requires a new agreement.</text>
+      <text x="29" y="241" font-size="14" fill="#62675f">Do not assume continued occupancy is guaranteed.</text>
+    </g>
+    <path d="M65 526h1070" stroke="#c9ccc5"/>
+    <text x="65" y="560" font-size="17" font-weight="600">MATCH THE CONTRACT PERIOD TO YOUR OWN HOUSING PLAN.</text>
+    <text x="65" y="602" font-size="14" letter-spacing="2">GARAGE HOUSE NAVI</text>
+    <text x="1135" y="602" font-size="12" letter-spacing="1" text-anchor="end" fill="#62675f">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+  </g>
+</svg>
