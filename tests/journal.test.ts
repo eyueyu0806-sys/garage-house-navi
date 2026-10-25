@@ -109,3 +109,34 @@ test('lease types article compares renewal and re-contract without promising ava
   }
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('parking certificate article distinguishes vehicle procedures and uses current official sources', () => {
+  const article = findPublishedArticle('osaka-garage-house-parking-certificate');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-10-25');
+  assert.ok(article.title.includes('車庫証明と住所変更'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 6);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('2キロメートルを超えない'));
+  assert.ok(body.includes('29市'));
+  assert.ok(body.includes('申請結果を保証するものではありません'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件の写真や個別の申請書ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 4);
+  for (const source of article.sources ?? []) {
+    const hostname = new URL(source.url).hostname;
+    assert.ok(['www.npa.go.jp', 'www.police.pref.osaka.lg.jp', 'wwwtb.mlit.go.jp'].includes(hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});

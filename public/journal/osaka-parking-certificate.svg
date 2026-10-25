@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウス入居前に確認する車庫証明の流れ</title>
+  <desc id="desc">車種を確認し、ガレージの要件を確かめ、必要書類を準備し、警察署と登録窓口で手続きを行う順番を示した編集部制作の図解。実在物件や個別の申請書ではありません。</desc>
+  <rect width="1200" height="630" fill="#f3f2ed"/>
+  <rect width="1200" height="12" fill="#222522"/>
+  <g font-family="Arial, sans-serif" fill="#222522">
+    <text x="64" y="62" font-size="16" letter-spacing="4" fill="#62675f">GARAGE LIFE / OSAKA</text>
+    <text x="64" y="124" font-size="40" font-weight="600" letter-spacing="1">MOVE IN WITH YOUR CAR.</text>
+    <text x="64" y="161" font-size="18" letter-spacing="1" fill="#62675f">CHECK THE PLACE, PAPERS AND PROCEDURE BEFORE MOVING.</text>
+
+    <g transform="translate(65 218)">
+      <rect width="252" height="245" fill="#fff" stroke="#c9ccc5"/>
+      <text x="20" y="37" font-size="14" letter-spacing="2" fill="#62675f">STEP 01</text>
+      <g transform="translate(20 59)" fill="none" stroke="#222522" stroke-width="2.5">
+        <path d="M6 45h83l14 22v18H0V59z"/>
+        <path d="M22 45l14-22h35l18 22 M35 45l10-18h22l14 18"/>
+        <circle cx="24" cy="84" r="11" fill="#fff"/><circle cx="80" cy="84" r="11" fill="#fff"/>
+      </g>
+      <text x="20" y="180" font-size="19" font-weight="600">VEHICLE TYPE</text>
+      <text x="20" y="207" font-size="14" fill="#62675f">Registered car or kei car</text>
+      <text x="20" y="229" font-size="14" fill="#62675f">Different procedures apply</text>
+    </g>
+
+    <g transform="translate(338 218)">
+      <rect width="252" height="245" fill="#fff" stroke="#c9ccc5"/>
+      <text x="20" y="37" font-size="14" letter-spacing="2" fill="#62675f">STEP 02</text>
+      <g transform="translate(20 57)" fill="none" stroke="#222522" stroke-width="2.5">
+        <path d="M2 91V38L53 5l51 33v53 M18 91V51h70v40"/>
+        <path d="M30 91V65h46v26 M38 73h30"/>
+      </g>
+      <text x="20" y="180" font-size="19" font-weight="600">GARAGE CHECK</text>
+      <text x="20" y="207" font-size="14" fill="#62675f">Access / storage / right to use</text>
+      <text x="20" y="229" font-size="14" fill="#62675f">Confirm with the actual car</text>
+    </g>
+
+    <g transform="translate(611 218)">
+      <rect width="252" height="245" fill="#fff" stroke="#c9ccc5"/>
+      <text x="20" y="37" font-size="14" letter-spacing="2" fill="#62675f">STEP 03</text>
+      <g transform="translate(20 58)" fill="none" stroke="#222522" stroke-width="2.5">
+        <path d="M6 3h67l24 24v74H6z M73 3v25h24"/>
+        <path d="M24 48h55 M24 62h55 M24 76h35"/>
+        <path d="M67 92l10 10 22-27"/>
+      </g>
+      <text x="20" y="180" font-size="19" font-weight="600">DOCUMENTS</text>
+      <text x="20" y="207" font-size="14" fill="#62675f">Agreement / consent / maps</text>
+      <text x="20" y="229" font-size="14" fill="#62675f">Match names and dates</text>
+    </g>
+
+    <g transform="translate(884 218)">
+      <rect width="252" height="245" fill="#222522" stroke="#222522"/>
+      <text x="20" y="37" font-size="14" letter-spacing="2" fill="#c9ccc5">STEP 04</text>
+      <g transform="translate(20 57)" fill="none" stroke="#fff" stroke-width="2.5">
+        <path d="M4 28h101 M14 28L54 4l41 24 M19 28v61 M38 28v61 M70 28v61 M91 28v61 M8 89h98"/>
+        <circle cx="113" cy="79" r="23" fill="#222522"/>
+        <path d="M103 79l8 8 16-19"/>
+      </g>
+      <text x="20" y="180" font-size="19" font-weight="600" fill="#fff">APPLY &amp; UPDATE</text>
+      <text x="20" y="207" font-size="14" fill="#c9ccc5">Police / registration office</text>
+      <text x="20" y="229" font-size="14" fill="#c9ccc5">Plan from the move-in date</text>
+    </g>
+
+    <path d="M65 511h1071" stroke="#c9ccc5"/>
+    <text x="65" y="550" font-size="17" font-weight="600">CONFIRM THE CURRENT REQUIREMENTS WITH THE RESPONSIBLE OFFICE.</text>
+    <text x="65" y="602" font-size="14" letter-spacing="2">GARAGE HOUSE NAVI</text>
+    <text x="1136" y="602" font-size="12" letter-spacing="1" text-anchor="end" fill="#62675f">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+  </g>
+</svg>
