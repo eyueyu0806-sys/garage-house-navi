@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">EV charging starts with questions</title>
+  <desc id="desc">A four-step editorial diagram for checking vehicle, equipment, power and billing, and permission before renting an EV-ready garage house.</desc>
+  <rect width="1200" height="630" fill="#f3f1ec"/>
+  <rect x="52" y="52" width="1096" height="526" fill="none" stroke="#171717" stroke-width="2"/>
+  <text x="92" y="111" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="4">GARAGE HOUSE NAVI / OSAKA GUIDE</text>
+  <text x="92" y="184" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" letter-spacing="1">EV CHARGING STARTS</text>
+  <text x="92" y="238" fill="#171717" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" letter-spacing="1">WITH QUESTIONS.</text>
+  <line x1="92" y1="284" x2="1108" y2="284" stroke="#171717" stroke-width="1"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#171717">
+    <g transform="translate(92 326)">
+      <text font-size="14" letter-spacing="2">01</text>
+      <circle cx="24" cy="67" r="24" fill="#171717"/>
+      <path d="M14 70h20M19 60h10M20 79h8" stroke="#f3f1ec" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="0" y="123" font-size="21" font-weight="700" letter-spacing="1">VEHICLE</text>
+      <text x="0" y="151" font-size="14" fill="#565656">MODEL / METHOD</text>
+    </g>
+    <g transform="translate(352 326)">
+      <text font-size="14" letter-spacing="2">02</text>
+      <circle cx="24" cy="67" r="24" fill="#171717"/>
+      <rect x="15" y="54" width="18" height="25" rx="2" fill="none" stroke="#f3f1ec" stroke-width="3"/>
+      <path d="M20 54v-7M28 54v-7M33 68h8v15" stroke="#f3f1ec" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="0" y="123" font-size="21" font-weight="700" letter-spacing="1">EQUIPMENT</text>
+      <text x="0" y="151" font-size="14" fill="#565656">TYPE / ACCESS</text>
+    </g>
+    <g transform="translate(612 326)">
+      <text font-size="14" letter-spacing="2">03</text>
+      <circle cx="24" cy="67" r="24" fill="#171717"/>
+      <path d="M27 49 14 69h11l-4 17 14-22H24z" fill="#f3f1ec"/>
+      <text x="0" y="123" font-size="21" font-weight="700" letter-spacing="1">POWER &amp; BILLING</text>
+      <text x="0" y="151" font-size="14" fill="#565656">CAPACITY / COST</text>
+    </g>
+    <g transform="translate(902 326)">
+      <text font-size="14" letter-spacing="2">04</text>
+      <circle cx="24" cy="67" r="24" fill="#171717"/>
+      <path d="M13 68l8 8 15-18" stroke="#f3f1ec" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="0" y="123" font-size="21" font-weight="700" letter-spacing="1">PERMISSION</text>
+      <text x="0" y="151" font-size="14" fill="#565656">WORK / RESTORATION</text>
+    </g>
+  </g>
+  <line x1="92" y1="520" x2="1108" y2="520" stroke="#171717" stroke-width="1"/>
+  <text x="92" y="552" fill="#565656" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+</svg>
