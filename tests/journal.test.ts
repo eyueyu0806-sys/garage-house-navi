@@ -173,3 +173,36 @@ test('EV charging article separates installed equipment from installation consul
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('hazard map article separates map layers and avoids safety guarantees', () => {
+  const article = findPublishedArticle('osaka-garage-house-hazard-map');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-10-31');
+  assert.ok(article.title.includes('ハザードマップ'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 6);
+  const table = article.sections[1].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('重ねるハザードマップ'));
+  assert.ok(body.includes('水害リスクがないと誤認'));
+  assert.ok(body.includes('掲載情報だけで安全性を保証することはできません'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件の写真・地図・災害予測ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 4);
+  for (const source of article.sources ?? []) {
+    const hostname = new URL(source.url).hostname;
+    assert.ok(['disaportal.gsi.go.jp', 'www.mlit.go.jp', 'www.pref.osaka.lg.jp'].includes(hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
