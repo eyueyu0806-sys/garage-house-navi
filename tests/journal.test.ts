@@ -206,3 +206,35 @@ test('hazard map article separates map layers and avoids safety guarantees', () 
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('pet-friendly article turns a broad label into written, property-specific checks', () => {
+  const article = findPublishedArticle('osaka-garage-house-pet-friendly');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-03');
+  assert.ok(article.title.includes('ペット可'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 6);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('管理規約、賃貸借契約書、ペット飼育細則'));
+  assert.ok(body.includes('原状回復'));
+  assert.ok(body.includes('飼育の可否や審査結果を保証するものではありません'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・飼育設備・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 5);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.mlit.go.jp', 'www.pref.osaka.lg.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
