@@ -82,6 +82,17 @@ try {
     assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-10-31');
   }
+  if(slug==='osaka-garage-house-pet-friendly'){
+    assert.equal(await page.locator('.journal-checklist li').count(),10);
+    assert.equal(await page.locator('.journal-table tbody tr').count(),5);
+    assert.equal(await page.locator('.journal-sources li').count(),5);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('ペット可'));
+    assert.ok((await page.locator('article').textContent()).includes('管理規約・契約書・特約'));
+    assert.ok((await page.locator('article').textContent()).includes('飼育の可否や審査結果を保証するものではありません'));
+    assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-03');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');

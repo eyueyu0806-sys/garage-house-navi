@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Pet-friendly garage house contract checklist</title>
+  <desc id="desc">An original editorial diagram showing four checks: pet profile, written rules, daily safety, and costs and exit.</desc>
+  <rect width="1200" height="630" fill="#f2f0eb"/>
+  <rect x="32" y="32" width="1136" height="566" fill="none" stroke="#191b19" stroke-width="2"/>
+  <text x="76" y="105" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="4">GARAGE HOUSE NAVI / OSAKA GUIDE</text>
+  <text x="76" y="179" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="54">PET-FRIENDLY STARTS</text>
+  <text x="76" y="238" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-style="italic">WITH THE RULES.</text>
+  <line x1="76" y1="278" x2="1124" y2="278" stroke="#191b19" stroke-width="1"/>
+
+  <g transform="translate(76 322)" fill="none" stroke="#191b19" stroke-width="2">
+    <circle cx="27" cy="27" r="10"/>
+    <circle cx="10" cy="10" r="7"/>
+    <circle cx="27" cy="6" r="7"/>
+    <circle cx="44" cy="10" r="7"/>
+    <path d="M9 34c0-12 8-20 18-20s18 8 18 20c0 10-7 16-18 16S9 44 9 34Z"/>
+  </g>
+  <text x="76" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">01 / PET PROFILE</text>
+  <text x="76" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">SPECIES · SIZE</text>
+  <text x="76" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">NUMBER</text>
+
+  <g transform="translate(342 316)" fill="none" stroke="#191b19" stroke-width="2">
+    <rect x="2" y="2" width="48" height="55"/>
+    <line x1="12" y1="18" x2="40" y2="18"/>
+    <line x1="12" y1="29" x2="40" y2="29"/>
+    <path d="M13 43l7 7 18-19"/>
+  </g>
+  <text x="342" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">02 / WRITTEN RULES</text>
+  <text x="342" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">LEASE · APPROVAL</text>
+  <text x="342" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">SHARED AREA</text>
+
+  <g transform="translate(650 316)" fill="none" stroke="#191b19" stroke-width="2">
+    <path d="M2 29 29 7l27 22v29H2Z"/>
+    <path d="M20 58V37h18v21"/>
+    <path d="M44 16v-9h7v15"/>
+  </g>
+  <text x="650" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">03 / DAILY SAFETY</text>
+  <text x="650" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">GARAGE · ROUTE</text>
+  <text x="650" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">EMERGENCY</text>
+
+  <g transform="translate(942 318)" fill="none" stroke="#191b19" stroke-width="2">
+    <circle cx="28" cy="28" r="26"/>
+    <path d="m15 28 9 9 18-21"/>
+  </g>
+  <text x="942" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">04 / COSTS &amp; EXIT</text>
+  <text x="942" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">FEES · DAMAGE</text>
+  <text x="942" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">RESTORATION</text>
+
+  <line x1="76" y1="495" x2="1124" y2="495" stroke="#191b19" stroke-width="1"/>
+  <text x="76" y="543" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+  <text x="1124" y="543" text-anchor="end" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-style="italic">Ask before you apply.</text>
+</svg>
