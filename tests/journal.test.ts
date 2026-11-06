@@ -238,3 +238,35 @@ test('pet-friendly article turns a broad label into written, property-specific c
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('DIY rental article requires written approval and defines the exit before work starts', () => {
+  const article = findPublishedArticle('osaka-garage-house-diy-rental');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-06');
+  assert.ok(article.title.includes('DIY可'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 6);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('申請書、図面・仕様、見積書、承諾書、合意書'));
+  assert.ok(body.includes('「DIY可」だから原状回復が不要とは限りません'));
+  assert.ok(body.includes('工事の承認や審査結果を保証するものではありません'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・施工例・承諾書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 5);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.mlit.go.jp', 'www.pref.osaka.lg.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});

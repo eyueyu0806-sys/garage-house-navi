@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">DIY rental approval checklist</title>
+  <desc id="desc">An original editorial diagram showing four stages: plan, approval, work, and exit.</desc>
+  <rect width="1200" height="630" fill="#f2f0eb"/>
+  <rect x="32" y="32" width="1136" height="566" fill="none" stroke="#191b19" stroke-width="2"/>
+  <text x="76" y="105" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="17" letter-spacing="4">GARAGE HOUSE NAVI / OSAKA GUIDE</text>
+  <text x="76" y="179" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="54">DIY PERMISSION IS</text>
+  <text x="76" y="238" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-style="italic">A DEFINED SCOPE.</text>
+  <line x1="76" y1="278" x2="1124" y2="278" stroke="#191b19" stroke-width="1"/>
+
+  <g transform="translate(76 318)" fill="none" stroke="#191b19" stroke-width="2">
+    <rect x="3" y="3" width="50" height="54"/>
+    <path d="M14 17h28M14 28h28M14 39h17"/>
+    <path d="m35 45 6 6 12-16"/>
+  </g>
+  <text x="76" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">01 / PLAN</text>
+  <text x="76" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">PLACE · MATERIAL</text>
+  <text x="76" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">METHOD</text>
+
+  <g transform="translate(342 318)" fill="none" stroke="#191b19" stroke-width="2">
+    <path d="M5 8h43v48H5Z"/>
+    <path d="M15 21h23M15 31h23M15 41h11"/>
+    <path d="m32 46 5 5 14-17"/>
+  </g>
+  <text x="342" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">02 / APPROVAL</text>
+  <text x="342" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">APPLICATION · CONSENT</text>
+  <text x="342" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">AGREEMENT</text>
+
+  <g transform="translate(650 318)" fill="none" stroke="#191b19" stroke-width="2">
+    <path d="M8 50 46 12M36 8l14 14M4 42l14 14"/>
+    <path d="M37 37 55 55M46 46l8-8"/>
+  </g>
+  <text x="650" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">03 / WORK</text>
+  <text x="650" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">BUILDER · TIME</text>
+  <text x="650" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">SAFETY</text>
+
+  <g transform="translate(942 318)" fill="none" stroke="#191b19" stroke-width="2">
+    <path d="M5 8h48v48H5Z"/>
+    <path d="M16 20h26M16 30h26M16 40h15"/>
+    <path d="m35 46 5 5 12-15"/>
+  </g>
+  <text x="942" y="405" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="13" letter-spacing="3">04 / EXIT</text>
+  <text x="942" y="438" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">KEEP · REMOVE</text>
+  <text x="942" y="462" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="16">RESTORE</text>
+
+  <line x1="76" y1="495" x2="1124" y2="495" stroke="#191b19" stroke-width="1"/>
+  <text x="76" y="543" fill="#191b19" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+  <text x="1124" y="543" text-anchor="end" fill="#191b19" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-style="italic">Get it in writing.</text>
+</svg>
