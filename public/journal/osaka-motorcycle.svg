@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪でバイク可のガレージハウスを選ぶ4つの確認</title>
+  <desc id="desc">車両情報、利用条件、現地確認、防犯と契約を順に確認する編集部制作の図解</desc>
+  <rect width="1200" height="630" fill="#f4f2ed"/>
+  <path d="M0 0h1200v12H0z" fill="#17191b"/>
+  <g fill="none" stroke="#d9d5ce">
+    <path d="M74 165h1052M74 525h1052"/>
+    <path d="M300 206v272M600 206v272M900 206v272" stroke-dasharray="3 8"/>
+  </g>
+  <text x="74" y="67" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="3">GARAGE LIFE / OSAKA</text>
+  <text x="74" y="117" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="34" font-weight="700">「バイク可」を、4つの確認に分ける。</text>
+  <text x="74" y="148" fill="#5c5a55" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="17">募集表示だけで決めず、使い方を伝えて現地と書面で確かめる</text>
+
+  <g font-family="Arial, 'Noto Sans JP', sans-serif">
+    <g transform="translate(74 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">01</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">車両情報</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">車名・排気量・台数</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">増車・買替えの予定</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <circle cx="40" cy="257" r="12" fill="none" stroke="#17191b" stroke-width="4"/>
+      <circle cx="129" cy="257" r="12" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M40 257l24-35h33l32 35M64 222l22 35M86 257h43M97 222l14-16h20" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(374 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">02</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">利用条件</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">始動・整備・洗車</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">時間帯・共用部</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <rect x="23" y="237" width="120" height="54" fill="none" stroke="#17191b" stroke-width="3"/>
+      <path d="M42 237v54M124 237v54M58 255h48M58 272h35" stroke="#17191b" stroke-width="3"/>
+    </g>
+    <g transform="translate(674 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">03</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">現地確認</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">段差・傾斜・路面</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">出入口からの動線</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <path d="M21 287h45l24-46h73" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round"/>
+      <path d="M143 226l20 15-20 15" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(974 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">04</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">防犯と契約</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">複数のロック</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">許可条件を書面へ</text>
+      <path d="M4 221h152" stroke="#17191b"/>
+      <rect x="34" y="244" width="85" height="57" rx="3" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M53 244v-18c0-30 47-30 47 0v18" fill="none" stroke="#17191b" stroke-width="4"/>
+      <circle cx="76" cy="270" r="6" fill="#17191b"/>
+      <path d="M76 276v12" stroke="#17191b" stroke-width="4"/>
+    </g>
+  </g>
+  <rect x="74" y="548" width="1052" height="1" fill="#d9d5ce"/>
+  <text x="74" y="585" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">CHECK THE PROPERTY-SPECIFIC RULES</text>
+  <text x="1126" y="585" text-anchor="end" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="12" letter-spacing="1.2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+</svg>
