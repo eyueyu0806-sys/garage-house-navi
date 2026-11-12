@@ -302,3 +302,35 @@ test('motorcycle article separates storage permission from use and requires writ
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('SOHO office article turns a broad label into specific use and written permission checks', () => {
+  const article = findPublishedArticle('osaka-garage-house-soho-office');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-12');
+  assert.ok(article.title.includes('SOHO・事務所利用可'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('使用目的を居住のみにするモデル'));
+  assert.ok(body.includes('法人の本店登記、個人事業の届出'));
+  assert.ok(body.includes('事業利用、登記、許認可、設備工事、入居審査が認められることを保証するものではありません'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・事務所・登記書類・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 5);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.mlit.go.jp', 'www.pref.osaka.lg.jp', 'j-net21.smrj.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});

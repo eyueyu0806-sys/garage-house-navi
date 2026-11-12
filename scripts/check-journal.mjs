@@ -115,6 +115,17 @@ try {
     assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-09');
   }
+  if(slug==='osaka-garage-house-soho-office'){
+    assert.equal(await page.locator('.journal-checklist li').count(),10);
+    assert.equal(await page.locator('.journal-table tbody tr').count(),5);
+    assert.equal(await page.locator('.journal-sources li').count(),5);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('SOHO・事務所利用可'));
+    assert.ok((await page.locator('article').textContent()).includes('使用目的を居住のみにするモデル'));
+    assert.ok((await page.locator('article').textContent()).includes('事業利用、登記、許認可、設備工事、入居審査が認められることを保証するものではありません'));
+    assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-12');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');
