@@ -334,3 +334,35 @@ test('SOHO office article turns a broad label into specific use and written perm
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('noise rules article separates sound sources, timing, place and written rules', () => {
+  const article = findPublishedArticle('osaka-garage-house-noise-rules');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-15');
+  assert.ok(article.title.includes('騒音・アイドリング・近隣ルール'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('アイドリングストップの義務'));
+  assert.ok(article.sections.some(section => section.heading.includes('「保管可」と「作業可」を分けて')));
+  assert.ok(body.includes('音の感じ方、静けさ、近隣から苦情が生じないこと'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・ガレージ・防音設備・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 5);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.env.go.jp', 'www.pref.osaka.lg.jp', 'www.mlit.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});

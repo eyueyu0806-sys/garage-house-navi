@@ -126,6 +126,17 @@ try {
     assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-12');
   }
+  if(slug==='osaka-garage-house-noise-rules'){
+    assert.equal(await page.locator('.journal-checklist li').count(),10);
+    assert.equal(await page.locator('.journal-table tbody tr').count(),5);
+    assert.equal(await page.locator('.journal-sources li').count(),5);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('騒音・アイドリング・近隣ルール'));
+    assert.ok((await page.locator('article').textContent()).includes('アイドリングストップの義務'));
+    assert.ok((await page.locator('article').textContent()).includes('音の感じ方、静けさ、近隣から苦情が生じないこと'));
+    assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-15');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');
