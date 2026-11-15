@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウスで音と近隣ルールを確認する4つの視点</title>
+  <desc id="desc">発生源、時間帯、伝わる場所、契約ルールを順に確認する編集部制作の図解</desc>
+  <rect width="1200" height="630" fill="#f4f2ed"/>
+  <path d="M0 0h1200v12H0z" fill="#17191b"/>
+  <g fill="none" stroke="#d9d5ce">
+    <path d="M74 165h1052M74 525h1052"/>
+    <path d="M300 206v272M600 206v272M900 206v272" stroke-dasharray="3 8"/>
+  </g>
+  <text x="74" y="67" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="3">GARAGE LIFE / OSAKA</text>
+  <text x="74" y="117" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="34" font-weight="700">音は「大きさ」だけで判断しない。</text>
+  <text x="74" y="148" fill="#5c5a55" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="17">日常の使い方を4つに分けて、現地と書面で確認する</text>
+
+  <g font-family="Arial, 'Noto Sans JP', sans-serif">
+    <g transform="translate(74 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">01</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">発生源</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">シャッター・エンジン</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">工具・音響・荷物</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <path d="M25 295h132V252H25zM42 278h98" fill="none" stroke="#17191b" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M55 238c12-18 25 18 37 0s25 18 37 0" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(374 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">02</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">時間帯</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">早朝・昼間・深夜</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">長さ・回数・頻度</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <circle cx="87" cy="270" r="48" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M87 237v35l24 15M87 213v10M87 317v10M30 270h10M134 270h10" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(674 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">03</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">伝わる場所</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">扉・壁・天井・道路</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">隣家・居室・共用部</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <path d="M25 303V254l62-37 62 37v49M47 303v-40h80v40M10 303h154" fill="none" stroke="#17191b" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M55 281h64M55 295h64" stroke="#17191b" stroke-width="3"/>
+    </g>
+    <g transform="translate(974 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">04</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">契約ルール</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">利用時間・禁止事項</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">連絡先・書面確認</text>
+      <path d="M4 221h152" stroke="#17191b"/>
+      <rect x="31" y="228" width="100" height="88" rx="2" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M52 252h58M52 270h58M52 288h34" stroke="#17191b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M90 301l11 10 22-27" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <rect x="74" y="548" width="1052" height="1" fill="#d9d5ce"/>
+  <text x="74" y="585" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">CHECK THE SOUND, TIME, PLACE AND RULES</text>
+  <text x="1126" y="585" text-anchor="end" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="12" letter-spacing="1.2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+</svg>
