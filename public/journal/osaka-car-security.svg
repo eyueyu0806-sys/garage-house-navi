@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウスで自動車防犯を4層に分けて確認する</title>
+  <desc id="desc">車両、鍵、ガレージ、日常運用を組み合わせて確認する編集部制作の図解</desc>
+  <rect width="1200" height="630" fill="#f4f2ed"/>
+  <path d="M0 0h1200v12H0z" fill="#17191b"/>
+  <g fill="none" stroke="#d9d5ce">
+    <path d="M74 165h1052M74 525h1052"/>
+    <path d="M300 206v272M600 206v272M900 206v272" stroke-dasharray="3 8"/>
+  </g>
+  <text x="74" y="67" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="3">GARAGE LIFE / OSAKA</text>
+  <text x="74" y="117" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="34" font-weight="700">シャッターだけに、頼らない。</text>
+  <text x="74" y="148" fill="#5c5a55" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="17">愛車の防犯を4つの層に分け、現地と書面で確認する</text>
+
+  <g font-family="Arial, 'Noto Sans JP', sans-serif">
+    <g transform="translate(74 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">01</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">車両</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">施錠・警報・固定器具</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">追跡・メーカー確認</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <path d="M19 281h150l-12-35H55l-23 35zM30 281v24h128v-24" fill="none" stroke="#17191b" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="55" cy="306" r="13" fill="#f4f2ed" stroke="#17191b" stroke-width="4"/>
+      <circle cx="135" cy="306" r="13" fill="#f4f2ed" stroke="#17191b" stroke-width="4"/>
+    </g>
+    <g transform="translate(374 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">02</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">鍵</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">スマートキー・スペア</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">保管場所・電波遮断</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <circle cx="62" cy="267" r="31" fill="none" stroke="#17191b" stroke-width="4"/>
+      <circle cx="62" cy="267" r="10" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M92 267h67M128 267v18M146 267v12" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(674 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">03</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">ガレージ</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">入口・照明・カメラ</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">故障・停電時の対応</text>
+      <path d="M4 221h172" stroke="#17191b"/>
+      <path d="M25 306v-58l62-32 62 32v58M48 306v-45h78v45M48 276h78M48 291h78" fill="none" stroke="#17191b" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M131 229l29-14 20 12-29 14zM151 241v15" fill="none" stroke="#17191b" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+    <g transform="translate(974 214)">
+      <circle cx="32" cy="31" r="31" fill="#17191b"/>
+      <text x="32" y="39" text-anchor="middle" fill="#f4f2ed" font-size="22" font-weight="700">04</text>
+      <text x="0" y="106" fill="#17191b" font-size="21" font-weight="700">日常運用</text>
+      <text x="0" y="142" fill="#5c5a55" font-size="15">車内を空に・毎回施錠</text>
+      <text x="0" y="169" fill="#5c5a55" font-size="15">記録・連絡・保険確認</text>
+      <path d="M4 221h152" stroke="#17191b"/>
+      <rect x="31" y="228" width="100" height="88" rx="2" fill="none" stroke="#17191b" stroke-width="4"/>
+      <path d="M52 252h58M52 270h58M52 288h34" stroke="#17191b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M90 301l11 10 22-27" fill="none" stroke="#17191b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <rect x="74" y="548" width="1052" height="1" fill="#d9d5ce"/>
+  <text x="74" y="585" fill="#17191b" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="14" font-weight="700" letter-spacing="1.5">LAYER VEHICLE, KEY, GARAGE AND DAILY HABITS</text>
+  <text x="1126" y="585" text-anchor="end" fill="#77736d" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="12" letter-spacing="1.2">ORIGINAL EDITORIAL DIAGRAM / NOT A PROPERTY PHOTO</text>
+</svg>
