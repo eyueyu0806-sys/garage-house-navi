@@ -366,3 +366,35 @@ test('noise rules article separates sound sources, timing, place and written rul
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('car security article layers vehicle, key, garage and daily habit checks', () => {
+  const article = findPublishedArticle('osaka-garage-house-car-security');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-18');
+  assert.ok(article.title.includes('自動車盗・車上ねらい'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('自動車盗は526件'));
+  assert.ok(article.introduction.includes('ガレージハウス固有の被害率を示すものではありません'));
+  assert.ok(body.includes('盗難・車上ねらい・部品被害が発生しないこと'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・車両・防犯設備・被害現場の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 5);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.police.pref.osaka.lg.jp', 'www.npa.go.jp', 'www.mlit.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});

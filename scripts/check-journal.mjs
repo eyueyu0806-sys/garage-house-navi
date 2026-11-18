@@ -137,6 +137,17 @@ try {
     assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-15');
   }
+  if(slug==='osaka-garage-house-car-security'){
+    assert.equal(await page.locator('.journal-checklist li').count(),10);
+    assert.equal(await page.locator('.journal-table tbody tr').count(),5);
+    assert.equal(await page.locator('.journal-sources li').count(),5);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('自動車盗・車上ねらい対策'));
+    assert.ok((await page.locator('article').textContent()).includes('自動車盗認知件数は526件'));
+    assert.ok((await page.locator('article').textContent()).includes('ガレージハウス固有の被害率を示すものではありません'));
+    assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-18');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');
