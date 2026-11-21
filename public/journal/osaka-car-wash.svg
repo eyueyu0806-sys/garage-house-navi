@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウスで洗車可否を5項目で確認する図解</title>
+  <desc id="desc">水栓、排水、洗剤、周辺、契約の順に確認し、水栓があることだけで洗車できると判断しないための編集部制作図解</desc>
+  <rect width="1200" height="630" fill="#f4f1eb"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#181a1b"/>
+  <text x="72" y="72" font-family="Noto Sans CJK JP, sans-serif" font-size="18" letter-spacing="4" fill="#5d625f">GARAGE LIFE / OSAKA</text>
+  <text x="72" y="134" font-family="Noto Serif CJK JP, serif" font-size="42" font-weight="600" fill="#161819">洗車できる？を、設備だけで決めない。</text>
+  <text x="74" y="176" font-family="Noto Sans CJK JP, sans-serif" font-size="21" fill="#555a57">水の入口から、排水・周辺・契約まで。5つの確認を一つにつなぐ。</text>
+
+  <line x1="72" y1="220" x2="1128" y2="220" stroke="#b9b8b2" stroke-width="1"/>
+
+  <g font-family="Noto Sans CJK JP, sans-serif">
+    <g transform="translate(72 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">1</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">水栓</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">用途・時間・料金</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">「ある」と「使える」を</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">分けて確認</text>
+    </g>
+    <g transform="translate(288 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">2</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">排水</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">行き先・方式・清掃</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">雨水ますへ流さない</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">方法を確認</text>
+    </g>
+    <g transform="translate(504 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">3</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">洗剤</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">種類・量・回収方法</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">製品ごとに扱いを</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">確かめる</text>
+    </g>
+    <g transform="translate(720 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">4</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">周辺</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">飛散・音・時間帯</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">人・道路・隣家の</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">動線を見る</text>
+    </g>
+    <g transform="translate(936 258)">
+      <rect width="192" height="218" fill="#1d2021" stroke="#1d2021"/>
+      <circle cx="34" cy="36" r="16" fill="#f4f1eb"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#1d2021">5</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#ffffff">契約</text>
+      <text x="20" y="124" font-size="16" fill="#d7d7d2">場所・用品・承諾</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#555a57"/>
+      <text x="20" y="182" font-size="15" fill="#f0efe9">できる範囲を</text>
+      <text x="20" y="205" font-size="15" fill="#f0efe9">書面に残す</text>
+    </g>
+  </g>
+
+  <g stroke="#777b78" stroke-width="1.5" fill="none">
+    <path d="M265 367h17"/><path d="M278 362l5 5-5 5"/>
+    <path d="M481 367h17"/><path d="M494 362l5 5-5 5"/>
+    <path d="M697 367h17"/><path d="M710 362l5 5-5 5"/>
+    <path d="M913 367h17"/><path d="M926 362l5 5-5 5"/>
+  </g>
+
+  <line x1="72" y1="526" x2="1128" y2="526" stroke="#b9b8b2" stroke-width="1"/>
+  <text x="72" y="565" font-family="Noto Sans CJK JP, sans-serif" font-size="16" letter-spacing="2" fill="#333735">ORIGINAL EDITORIAL DIAGRAM</text>
+  <text x="1128" y="565" text-anchor="end" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#555a57">実在物件・設備の写真ではありません</text>
+  <text x="72" y="596" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#777b78">GARAGE HOUSE NAVI / ASC不動産</text>
+</svg>

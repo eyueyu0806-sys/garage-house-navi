@@ -148,6 +148,17 @@ try {
     assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
     assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-18');
   }
+  if(slug==='osaka-garage-house-car-wash'){
+    assert.equal(await page.locator('.journal-checklist li').count(),10);
+    assert.equal(await page.locator('.journal-table tbody tr').count(),5);
+    assert.equal(await page.locator('.journal-sources li').count(),6);
+    assert.equal(await page.locator('.journal-related a').count(),2);
+    assert.ok((await page.locator('#article-checklist-heading').textContent()).includes('洗車可否'));
+    assert.ok((await page.locator('article').textContent()).includes('雨水ますへ洗濯や洗車の排水を流さない'));
+    assert.ok((await page.locator('article').textContent()).includes('洗車、洗剤・機器の使用、設備追加、入居審査が認められることを保証するものではありません'));
+    assert.ok(!(await page.locator('article').textContent()).includes('ガレージ幅'));
+    assert.equal(await page.locator('meta[property="article:published_time"]').getAttribute('content'),'2026-11-21');
+  }
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:`${output}/journal-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.getByRole('link',{name:'希望条件を相談する',exact:true}).getAttribute('href'),'/request?prefecture=osaka');
