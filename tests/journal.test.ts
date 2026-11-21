@@ -398,3 +398,36 @@ test('car security article layers vehicle, key, garage and daily habit checks', 
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('car wash article separates a water tap from drainage and written permission', () => {
+  const article = findPublishedArticle('osaka-garage-house-car-wash');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-21');
+  assert.ok(article.title.includes('洗車できる？'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(article.introduction.includes('水栓や排水口が見えても、そこで洗車できるとは限りません'));
+  assert.ok(body.includes('雨水ますへ洗濯や洗車の排水を流さない'));
+  assert.ok(body.includes('ホースから流し洗いする一般的な洗車で約240リットル'));
+  assert.ok(body.includes('洗車、洗剤・機器の使用、設備追加、入居審査が認められることを保証するものではありません'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・洗車場・排水設備・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 6);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.pref.osaka.lg.jp', 'www.city.osaka.lg.jp', 'www.mlit.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
