@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウスで冬の結露と換気を5項目で確認する図解</title>
+  <desc id="desc">排気、換気、水分、保管、契約を分けて確認し、設備が見えるだけで結露や排気の問題が解決すると判断しないための編集部制作図解</desc>
+  <rect width="1200" height="630" fill="#f4f1eb"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#181a1b"/>
+  <text x="72" y="72" font-family="Noto Sans CJK JP, sans-serif" font-size="18" letter-spacing="4" fill="#5d625f">GARAGE LIFE / OSAKA</text>
+  <text x="72" y="134" font-family="Noto Serif CJK JP, serif" font-size="42" font-weight="600" fill="#161819">冬の結露と換気を、印象で決めない。</text>
+  <text x="74" y="176" font-family="Noto Sans CJK JP, sans-serif" font-size="21" fill="#555a57">排気の安全から、水分・保管・契約まで。5つを分けて確かめる。</text>
+
+  <line x1="72" y1="220" x2="1128" y2="220" stroke="#b9b8b2" stroke-width="1"/>
+
+  <g font-family="Noto Sans CJK JP, sans-serif">
+    <g transform="translate(72 258)">
+      <rect width="192" height="218" fill="#1d2021" stroke="#1d2021"/>
+      <circle cx="34" cy="36" r="16" fill="#f4f1eb"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#1d2021">1</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#ffffff">排気</text>
+      <text x="20" y="124" font-size="16" fill="#d7d7d2">始動・停止・動線</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#555a57"/>
+      <text x="20" y="182" font-size="15" fill="#f0efe9">ガレージ内で</text>
+      <text x="20" y="205" font-size="15" fill="#f0efe9">暖機・待機しない</text>
+    </g>
+    <g transform="translate(288 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">2</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">換気</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">給気・排気・運転</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">空気の入口と出口を</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">一つずつ確認</text>
+    </g>
+    <g transform="translate(504 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">3</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">水分</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">結露・雨水・漏水</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">晴天の一度だけで</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">原因を断定しない</text>
+    </g>
+    <g transform="translate(720 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">4</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">保管</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">収納・清掃・点検</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">給排気口と動線を</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">ふさがない</text>
+    </g>
+    <g transform="translate(936 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/>
+      <text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">5</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">契約</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">承諾・修繕・記録</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">機器と異常時対応を</text>
+      <text x="20" y="205" font-size="15" fill="#2f3432">書面に残す</text>
+    </g>
+  </g>
+
+  <g stroke="#777b78" stroke-width="1.5" fill="none">
+    <path d="M265 367h17"/><path d="M278 362l5 5-5 5"/>
+    <path d="M481 367h17"/><path d="M494 362l5 5-5 5"/>
+    <path d="M697 367h17"/><path d="M710 362l5 5-5 5"/>
+    <path d="M913 367h17"/><path d="M926 362l5 5-5 5"/>
+  </g>
+
+  <line x1="72" y1="526" x2="1128" y2="526" stroke="#b9b8b2" stroke-width="1"/>
+  <text x="72" y="565" font-family="Noto Sans CJK JP, sans-serif" font-size="16" letter-spacing="2" fill="#333735">ORIGINAL EDITORIAL DIAGRAM</text>
+  <text x="1128" y="565" text-anchor="end" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#555a57">実在物件・設備・結露被害の写真ではありません</text>
+  <text x="72" y="596" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#777b78">GARAGE HOUSE NAVI / ASC不動産</text>
+</svg>

@@ -431,3 +431,36 @@ test('car wash article separates a water tap from drainage and written permissio
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('condensation article separates exhaust safety, ventilation, moisture and written duties', () => {
+  const article = findPublishedArticle('osaka-garage-house-condensation-ventilation');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-24');
+  assert.ok(article.title.includes('冬の結露・湿気'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('ガレージ内での暖機、待機、整備中の連続運転が安全だと自己判断しない'));
+  assert.ok(body.includes('居室の24時間換気がガレージを含むとは限りません'));
+  assert.ok(body.includes('結露を放置してシミ等を生じさせた場合'));
+  assert.ok(body.includes('結露・カビ・腐食・一酸化炭素中毒等が発生しないこと'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・ガレージ・換気設備・結露被害・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 7);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.city.osaka.lg.jp', 'www.pref.osaka.lg.jp', 'www.mlit.go.jp', 'www.nite.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
