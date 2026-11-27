@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">大阪のガレージハウスで火災予防を5項目で確認する図解</title>
+  <desc id="desc">燃料、バッテリー、警報と消火、避難、契約を分け、保管物と日常の使い方まで確認するための編集部制作図解</desc>
+  <rect width="1200" height="630" fill="#f4f1eb"/>
+  <rect width="1200" height="10" fill="#181a1b"/>
+  <text x="72" y="72" font-family="Noto Sans CJK JP, sans-serif" font-size="18" letter-spacing="4" fill="#5d625f">GARAGE LIFE / OSAKA</text>
+  <text x="72" y="134" font-family="Noto Serif CJK JP, serif" font-size="42" font-weight="600" fill="#161819">ガレージの防火を、設備だけで決めない。</text>
+  <text x="74" y="176" font-family="Noto Sans CJK JP, sans-serif" font-size="21" fill="#555a57">置く物、充電、警報、逃げ方、契約。5つを入居前につなげる。</text>
+  <line x1="72" y1="220" x2="1128" y2="220" stroke="#b9b8b2"/>
+
+  <g font-family="Noto Sans CJK JP, sans-serif">
+    <g transform="translate(72 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/><text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">燃料</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">品目・数量・容器</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">少量を安全と</text><text x="20" y="205" font-size="15" fill="#2f3432">決めつけない</text>
+    </g>
+    <g transform="translate(288 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/><text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">電池</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">充電・異常・処分</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">不在・就寝中の</text><text x="20" y="205" font-size="15" fill="#2f3432">充電を前提にしない</text>
+    </g>
+    <g transform="translate(504 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/><text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">警報・消火</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">範囲・点検・管理者</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">「ある」だけでなく</text><text x="20" y="205" font-size="15" fill="#2f3432">使える状態を確認</text>
+    </g>
+    <g transform="translate(720 258)">
+      <rect width="192" height="218" fill="#1d2021" stroke="#1d2021"/>
+      <circle cx="34" cy="36" r="16" fill="#f4f1eb"/><text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#1d2021">4</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#fff">避難</text>
+      <text x="20" y="124" font-size="16" fill="#d7d7d2">出入口・停電・動線</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#555a57"/>
+      <text x="20" y="182" font-size="15" fill="#f0efe9">車と収納を置いた後も</text><text x="20" y="205" font-size="15" fill="#f0efe9">逃げ道を残す</text>
+    </g>
+    <g transform="translate(936 258)">
+      <rect width="192" height="218" fill="#ffffff" stroke="#d4d1ca"/>
+      <circle cx="34" cy="36" r="16" fill="#1d2021"/><text x="34" y="42" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text>
+      <text x="20" y="88" font-size="27" font-weight="700" fill="#17191a">契約</text>
+      <text x="20" y="124" font-size="16" fill="#555a57">承諾・工事・原状回復</text>
+      <line x1="20" y1="148" x2="172" y2="148" stroke="#d8d5ce"/>
+      <text x="20" y="182" font-size="15" fill="#2f3432">保管と追加設備を</text><text x="20" y="205" font-size="15" fill="#2f3432">書面に残す</text>
+    </g>
+  </g>
+
+  <g stroke="#777b78" stroke-width="1.5" fill="none">
+    <path d="M265 367h17"/><path d="M278 362l5 5-5 5"/>
+    <path d="M481 367h17"/><path d="M494 362l5 5-5 5"/>
+    <path d="M697 367h17"/><path d="M710 362l5 5-5 5"/>
+    <path d="M913 367h17"/><path d="M926 362l5 5-5 5"/>
+  </g>
+
+  <line x1="72" y1="526" x2="1128" y2="526" stroke="#b9b8b2"/>
+  <text x="72" y="565" font-family="Noto Sans CJK JP, sans-serif" font-size="16" letter-spacing="2" fill="#333735">ORIGINAL EDITORIAL DIAGRAM</text>
+  <text x="1128" y="565" text-anchor="end" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#555a57">実在物件・消防設備・事故現場の写真ではありません</text>
+  <text x="72" y="596" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#777b78">GARAGE HOUSE NAVI / ASC不動産</text>
+</svg>
