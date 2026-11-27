@@ -464,3 +464,37 @@ test('condensation article separates exhaust safety, ventilation, moisture and w
   assert.equal(article.relatedSlugs?.length, 2);
   for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
 });
+
+test('fire safety article separates hazardous storage, charging, equipment and evacuation', () => {
+  const article = findPublishedArticle('osaka-garage-house-fire-safety');
+  assert.ok(article);
+  assert.equal(article.publishedAt, '2026-11-27');
+  assert.ok(article.title.includes('防火は何を確認する？'));
+  assert.equal(article.checklist?.length, 10);
+  assert.ok(article.sections.length >= 7);
+  const table = article.sections[0].table;
+  assert.ok(table);
+  assert.equal(table.rows.length, 5);
+  for (const row of table.rows) assert.equal(row.length, table.headers.length);
+  const body = article.sections.flatMap(section => section.paragraphs).join('\n');
+  assert.ok(body.includes('数量基準を「ここまでなら自由に保管できる目安」'));
+  assert.ok(body.includes('外出時・就寝時の充電を控える'));
+  assert.ok(body.includes('ガレージが検知範囲に含まれると自己判断しない'));
+  assert.ok(body.includes('危険を感じた場合は避難を優先'));
+  assert.ok(body.includes('火災・事故が発生しないこと'));
+  assert.ok(!body.includes('ガレージ幅'));
+  assert.ok(!body.includes('ガレージ奥行'));
+  assert.ok(article.image && existsSync(`public${article.image}`));
+  assert.ok(article.imageCaption?.includes('実在物件・ガレージ・消防設備・事故現場・契約書の写真ではありません'));
+  const png = readFileSync(`public${article.image}`);
+  assert.equal(png.readUInt32BE(16), 1200);
+  assert.equal(png.readUInt32BE(20), 630);
+  assert.ok(png.length < 150_000);
+  assert.equal(article.sources?.length, 6);
+  for (const source of article.sources ?? []) {
+    assert.ok(['www.city.osaka.lg.jp', 'www.nite.go.jp', 'www.mlit.go.jp'].includes(new URL(source.url).hostname));
+    assert.equal(source.checkedAt, article.updatedAt);
+  }
+  assert.equal(article.relatedSlugs?.length, 2);
+  for (const slug of article.relatedSlugs ?? []) assert.ok(findPublishedArticle(slug));
+});
